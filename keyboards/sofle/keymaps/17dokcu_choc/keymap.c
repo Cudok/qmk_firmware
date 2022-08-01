@@ -27,10 +27,10 @@
 // Light combinations
 #define SET_INDICATORS(hsv) \
 	{0, 1, HSV_OVERRIDE_HELP(hsv, INDICATOR_BRIGHTNESS)}, \
-    {35+0, 1, hsv}
+    {29+0, 1, hsv}
 #define SET_UNDERGLOW(hsv) \
 	{1, 6, hsv}, \
-    {35+1, 6,hsv}
+    {29+1, 6,hsv}
 #define SET_NUMPAD(hsv)     \
 	{35+15, 5, hsv},\
 	  {35+22, 3, hsv},\
@@ -54,13 +54,17 @@
 	  {35+ 25, 2, hsv}
 #define SET_LAYER_ID(hsv) 	\
 	{0, 1, HSV_OVERRIDE_HELP(hsv, INDICATOR_BRIGHTNESS)}, \
-    {35+0, 1, HSV_OVERRIDE_HELP(hsv, INDICATOR_BRIGHTNESS)}, \
+    {29+0, 1, HSV_OVERRIDE_HELP(hsv, INDICATOR_BRIGHTNESS)}, \
 		{1, 6, hsv}, \
-    {35+1, 6, hsv}, \
+    {29+1, 6, hsv}, \
 		{7, 4, hsv}, \
-	  {35+ 7, 4, hsv}, \
+	  {29+ 7, 4, hsv}, \
 		{25, 2, hsv}, \
-	  {35+ 25, 2, hsv}
+	  {29+ 25, 2, hsv}
+// rgb high lighting moving keys
+#define SET_HJKL(hsv)                           \
+	{31, 1, hsv}, \
+	  {37, 1, hsv}
 
 
 enum sofle_layers {
@@ -317,6 +321,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	),
 };
+// RGB STUFF
+//
+/* LED positions
+ * ,----------------------------------------.                     ,-----------------------------------------.
+ * |  28  |  21  |  20  |  11  | 10   |  0   |                    |  29  |  39  |  40  |  49  |  50  |  57  |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * |  27  |  22  |  19  |  12  |  9   |  1   |                    |  30  |  38  |  41  |  48  |  51  |  56  |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * |  26  |  23  |  18  |  13  |  8   |  2   |-------.    ,-------|  31  |  37  |  42  |  47  |  52  |  55  |
+ * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
+ * |  25  |  24  |  17  |  14  |  7   |  3   |-------|    |-------|  32  |  36  |  43  |  46  |  53  |  54  |
+ * `-----------------------------------------/       /     \      \-----------------------------------------'
+ *               |  16  |  15  |  6   | 5  | /  4   /       \  33 \ | 34 |  35  |  44  |  45  |
+ *               |      |      |      |    |/      /         \     \|    |      |      |      |
+ *               `--------------------------------'           '-------------------------------'
+ */
 
 #ifdef RGBLIGHT_ENABLE
 char layer_state_str[70];
@@ -325,7 +345,7 @@ char layer_state_str[70];
 // QWERTY,
 // Light on inner column and underglow
 const rgblight_segment_t PROGMEM layer_qwerty_lights[] = RGBLIGHT_LAYER_SEGMENTS(
-  SET_LAYER_ID(HSV_RED)
+  SET_LAYER_ID(HSV_YELLOW)
 
 );
 const rgblight_segment_t PROGMEM layer_colemakdh_lights[] = RGBLIGHT_LAYER_SEGMENTS(
@@ -335,7 +355,16 @@ const rgblight_segment_t PROGMEM layer_colemakdh_lights[] = RGBLIGHT_LAYER_SEGME
 // _NUM,
 // Light on outer column and underglow
 const rgblight_segment_t PROGMEM layer_num_lights[] = RGBLIGHT_LAYER_SEGMENTS(
-	SET_LAYER_ID(HSV_TEAL)
+	SET_LAYER_ID(HSV_TEAL),
+    {31,1, HSV_GREEN}, // moveing keys */
+    {37,1, HSV_YELLOW}, // moveing keys */
+    {42,1, HSV_YELLOW}, // moveing keys */
+    {47,1, HSV_GREEN},  // moveing keys */
+    {52,1, HSV_RED},  // delete key */
+    {55,1, HSV_BLUE}  // Screen print */
+
+    /*                                                                             ); */
+
 
 );
 // _SYMBOL,
@@ -382,8 +411,8 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 	rgblight_set_layer_state(7, layer_state_cmp(state, _DEFAULTS) && layer_state_cmp(default_layer_state,_COLEMAKDH));
 
 
-	rgblight_set_layer_state(1, layer_state_cmp(state, _LOWER));
-	rgblight_set_layer_state(2, layer_state_cmp(state, _RAISE));
+	rgblight_set_layer_state(1, layer_state_cmp(state, _RAISE));
+	rgblight_set_layer_state(2, layer_state_cmp(state, _LOWER));
 	rgblight_set_layer_state(3, layer_state_cmp(state, _ADJUST));
 	rgblight_set_layer_state(4, layer_state_cmp(state, _NUMPAD));
 	rgblight_set_layer_state(5, layer_state_cmp(state, _SWITCH));
@@ -413,7 +442,7 @@ static void render_logo(void) {
 static void print_status_narrow(void) {
     // Print current mode
     oled_write_P(PSTR("\n\n"), false);
-    oled_write_ln_P(PSTR("Dane\nEvans"), false);
+    oled_write_ln_P(PSTR("Dokcu"), false);
 
     oled_write_ln_P(PSTR(""), false);
 
