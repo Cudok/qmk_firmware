@@ -28,11 +28,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define MASTER_RIGHT
 // #define EE_HANDS
 
-//#define TAPPING_FORCE_HOLD
-//#define TAPPING_TERM 100
+#define TAPPING_FORCE_HOLD
+#define TAPPING_TERM 100
 
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_EFFECT_BREATHING
+    #define RGBLIGHT_LAYERS
+//    #define RGBLED_NUM 54 // not needed, because defined in crkbd/rev1/config
+//    #define RGBLED_SPLIT \ { 27, 27 } // not needed, because defined in crkbd/rev1/config
     #define RGBLIGHT_EFFECT_RAINBOW_MOOD
     #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
     #define RGBLIGHT_EFFECT_SNAKE
