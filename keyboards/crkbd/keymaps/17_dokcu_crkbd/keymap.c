@@ -186,16 +186,17 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 #define L_ADJUST 8
 
 void oled_render_layer_state(void) {
+    oled_write_ln_P(PSTR("Dokcu"), false);
     oled_write_P(PSTR("Layer: "), false);
     switch (layer_state) {
         case L_BASE:
             oled_write_ln_P(PSTR("Default"), false);
             break;
-        case _NUM_MOVE:
-            oled_write_ln_P(PSTR("Lower"), false);
+        case L_LOWER:
+            oled_write_ln_P(PSTR("Move_Num"), false);
             break;
         case L_RAISE:
-            oled_write_ln_P(PSTR("Raise"), false);
+            oled_write_ln_P(PSTR("Symb"), false);
             break;
         case L_ADJUST:
         case L_ADJUST|L_LOWER:
