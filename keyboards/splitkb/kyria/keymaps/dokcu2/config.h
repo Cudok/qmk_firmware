@@ -16,6 +16,10 @@
 
 #pragma once
 
+
+#define TAPPING_FORCE_HOLD
+#define TAPPING_TERM 200 // 100 ms is to small for me
+
 #ifdef RGBLIGHT_ENABLE
 #    define RGBLIGHT_EFFECT_BREATHING
 #    define RGBLIGHT_EFFECT_RAINBOW_MOOD

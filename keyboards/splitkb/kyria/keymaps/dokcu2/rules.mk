@@ -5,3 +5,5 @@ RGB_MATRIX_ENABLE = yes     # Disable keyboard RGB matrix, as it is enabled by d
 RGBLIGHT_ENABLE = no      # Enable keyboard RGB underglow
 RGB_MATRIX_DRIVER = WS2812
 ## WS2812_DRIVER = bitbang
+
+TAP_DANCE_ENABLE=yes	   # Enables Tap Dance
