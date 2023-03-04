@@ -27,13 +27,15 @@ enum layers {
 
 // Tap Dance declarations
 enum {
-    TD_SHIFT_CAPS,
+    TD_SHIFT_CAPS_L,
+    TD_SHIFT_CAPS_R,
 };
 
 // Tap Dance definitions
 qk_tap_dance_action_t tap_dance_actions[] = {
     // Tap once for Escape, twice for Caps Lock
-    [TD_SHIFT_CAPS] = ACTION_TAP_DANCE_DOUBLE(KC_LSFT, KC_CAPS),
+    [TD_SHIFT_CAPS_L] = ACTION_TAP_DANCE_DOUBLE(KC_LSFT, KC_CAPS),
+    [TD_SHIFT_CAPS_R] = ACTION_TAP_DANCE_DOUBLE(KC_RSFT, KC_CAPS),
 };
 
 
@@ -51,7 +53,8 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 #define CTL_QUOT MT(MOD_RCTL, KC_QUOTE)
 #define CTL_MINS MT(MOD_RCTL, KC_MINUS)
 #define ALT_ENT  MT(MOD_LALT, KC_ENT)
-
+#define TD_LSFT  TD(TD_SHIFT_CAPS_L)
+#define TD_RSFT  TD(TD_SHIFT_CAPS_R)
 // Note: LAlt/Enter (ALT_ENT) is not the same thing as the keyboard shortcut Alt+Enter.
 // The notation `mod/tap` denotes a key that activates the modifier `mod` when held down, and
 // produces the key `tap` when tapped (i.e. pressed and released).
@@ -75,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT(
      QK_GESC , KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                        KC_Y,   KC_U ,  KC_I ,   KC_O ,  KC_P , KC_BSPC,
      KC_TAB  , KC_A ,  KC_S   ,  KC_D  ,   KC_F ,   KC_G ,                                        KC_H,   KC_J ,  KC_K ,   KC_L ,KC_SCLN,CTL_QUOT,
-     TD(TD_SHIFT_CAPS), KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , ADJUST ,KC_MUTE,     FKEYS  , KC_SPC , KC_N,   KC_M ,KC_COMM, KC_DOT ,KC_SLSH, KC_RSFT,
+     TD_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , ADJUST ,KC_MUTE,     FKEYS  , KC_SPC , KC_N,   KC_M ,KC_COMM, KC_DOT ,KC_SLSH, TD_RSFT,
                                 KC_LGUI, KC_LCTL, KC_LALT, KC_SPC , SYM   ,     NAV    ,KC_ENTER,KC_RALT, KC_RCTL, KC_APP
     ),
 
@@ -256,13 +259,43 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  *                        `----------------------------------'  `----------------------------------'
 // Light LEDs 6 to 9 and 12 to 15 red when caps lock is active. Hard to ignore!
 const rgblight_segment_t PROGMEM my_capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {6, 4, HSV_RED}       // Light 4 LEDs, starting with LED 6
-  //  {12, 4, HSV_RED}       // Light 4 LEDs, starting with LED 12
+    {5, 2, HSV_RED},       // Light 4 LEDs, starting with LED 6
+    {12, 4, HSV_RED}       // Light 4 LEDs, starting with LED 12
 );
+
+// Light LEDs 11 & 12 in purple when keyboard layer 2 is active
+const rgblight_segment_t PROGMEM my_layer2_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {21, 2, HSV_PURPLE}
+);
+// Light LEDs 13 & 14 in green when keyboard layer 3 is active
+const rgblight_segment_t PROGMEM my_layer3_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {13, 2, HSV_GREEN}
+);
+// rgb layer for layer num_move
+// number keys
+#define color_number_keys HSV_BLUE
+const rgblight_segment_t PROGMEM num_move_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+                                                                            {9, 2, color_number_keys}, // number keys
+                                                                            {17,2, color_number_keys}, // number keys
+                                                                            {23,1, color_number_keys}, // number keys
+                                                                            {36,2, color_number_keys}, // number keys
+                                                                            {44,2, color_number_keys}, // number keys
+                                                                            {50,1, color_number_keys}, // number keys
+                                                                            {35,1, HSV_GREEN}, // moveing keys
+                                                                            {38,1, HSV_YELLOW}, // moveing keys
+                                                                            {43,1, HSV_YELLOW}, // moveing keys
+                                                                            {46,1, HSV_GREEN},  // moveing keys
+                                                                            {49,1, HSV_RED},  // delete keys
+                                                                            {52,1, HSV_CYAN}  // moveing keys
+                                                                            );
+
 
 // Now define the array of layers. Later layers take precedence
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
-    my_capslock_layer  // caps lock layer, normally I dont need
+    my_capslock_layer,  // caps lock layer, normally I dont need
+    num_move_layer,    // numbers and move layer
+    my_layer2_layer,    // Overrides other layers
+    my_layer3_layer     // Overrides other layers
 );
 
 void keyboard_post_init_user(void) {
@@ -274,12 +307,13 @@ bool led_update_user(led_t led_state) {
     rgblight_set_layer_state(0, led_state.caps_lock);
     return true;
 }
-/* layer_state_t layer_state_set_user(layer_state_t state) { */
-/*     rgblight_set_layer_state(1, layer_state_cmp(state, _NAV)); */
-/*     rgblight_set_layer_state(2, layer_state_cmp(state, _SYM)); */
-/*     rgblight_set_layer_state(3, layer_state_cmp(state, _ADJUST)); */
-/*     return state; */
-/* } */
+layer_state_t layer_state_set_user(layer_state_t state) {
+    rgblight_set_layer_state(1, layer_state_cmp(state, _NAV));
+    rgblight_set_layer_state(2, layer_state_cmp(state, _SYM));
+    rgblight_set_layer_state(3, layer_state_cmp(state, _ADJUST));
+    return state;
+}
+//////// added
 
 // until here RGB LEDs dokcu
 
