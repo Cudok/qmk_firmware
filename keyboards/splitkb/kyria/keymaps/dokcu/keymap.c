@@ -259,16 +259,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  *                        `----------------------------------'  `----------------------------------'
 // Light LEDs 6 to 9 and 12 to 15 red when caps lock is active. Hard to ignore!
 const rgblight_segment_t PROGMEM my_capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {5, 2, HSV_RED},       // Light 4 LEDs, starting with LED 6
-    {12, 4, HSV_RED}       // Light 4 LEDs, starting with LED 12
+    {17, 2, HSV_RED},       // Light 4 LEDs, starting with LED 6
+    {48, 2, HSV_RED}       // Light 4 LEDs, starting with LED 12
 );
 
 // Light LEDs 11 & 12 in purple when keyboard layer 2 is active
-const rgblight_segment_t PROGMEM my_layer2_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+const rgblight_segment_t PROGMEM sym_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {21, 2, HSV_PURPLE}
 );
 // Light LEDs 13 & 14 in green when keyboard layer 3 is active
-const rgblight_segment_t PROGMEM my_layer3_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+const rgblight_segment_t PROGMEM adjust_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {13, 2, HSV_GREEN}
 );
 // rgb layer for layer num_move
@@ -294,8 +294,8 @@ const rgblight_segment_t PROGMEM num_move_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
     my_capslock_layer,  // caps lock layer, normally I dont need
     num_move_layer,    // numbers and move layer
-    my_layer2_layer,    // Overrides other layers
-    my_layer3_layer     // Overrides other layers
+    sym_layer,    // Overrides other layers
+    adjust_layer     // Overrides other layers
 );
 
 void keyboard_post_init_user(void) {
