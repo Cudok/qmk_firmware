@@ -125,44 +125,44 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
 /*
- * Nav Layer: Media, navigation
+ * Nav Layer: number, navigation
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |        |      |      |      |      |      |                              | PgUp | Home |   ↑  | End  | VolUp| Delete |
+ * |        |   1  |   2  |  3   |  4   |  5   |                              |   6  |  7   |  8   |  9   |  0   |        |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        |  GUI |  Alt | Ctrl | Shift|      |                              | PgDn |  ←   |   ↓  |   →  | VolDn| Insert |
+ * |        |      |      |      |      |      |                              |  ←   |   ↓  |   ↑  |   →  | Del  | PrtSc  |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |ScLck |  |      |      | Pause|M Prev|M Play|M Next|VolMut| PrtSc  |
+ * |        |      |      |      |      |      |      |      |  |      |      |      |      |Vol D |Vol U | Mute |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_NAV] = LAYOUT(
-      _______, _______, _______, _______, _______, _______,                                     KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_VOLU, KC_DEL,
-      _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,                                     KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_VOLD, KC_INS,
-      _______, _______, _______, _______, _______, _______, _______, KC_SCRL, _______, _______,KC_PAUSE, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_PSCR,
+      _______,   KC_1 ,   KC_2 ,   KC_3 ,   KC_4 ,   KC_5 ,                                       KC_6 ,   KC_7 ,   KC_8 ,   KC_9 ,   KC_0 , _______,
+      _______, _______, _______, _______, _______, _______,                                     KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, KC_DEL , KC_PSCR,
+      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,KC_PAUSE, KC_MPRV, KC_VOLD, KC_VOLU, KC_MUTE, _______,
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
 
 /*
- * Sym Layer: Numbers and symbols
+ * Sym Layer: symbols
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |    `   |  1   |  2   |  3   |  4   |  5   |                              |   6  |  7   |  8   |  9   |  0   |   =    |
- * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |    ~   |  !   |  @   |  #   |  $   |  %   |                              |   ^  |  &   |  *   |  (   |  )   |   +    |
+ * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
+ * |   F1   |  F2  |  F3  |  F4  |  F5  |  F6  |                              |   -  |   =  |  [   |  ]   |  \   |   `    |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |    |   |   \  |  :   |  ;   |  -   |  [   |  {   |      |  |      |   }  |   ]  |  _   |  ,   |  .   |  /   |   ?    |
+ * |   F7   |  F8  |  F9  |  F10 |  F11 |  F12 |      |      |  |      |      |   _  |   +  |  {   |  }   |  |   |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_SYM] = LAYOUT(
-      KC_GRV ,   KC_1 ,   KC_2 ,   KC_3 ,   KC_4 ,   KC_5 ,                                       KC_6 ,   KC_7 ,   KC_8 ,   KC_9 ,   KC_0 , KC_EQL ,
      KC_TILD , KC_EXLM,  KC_AT , KC_HASH,  KC_DLR, KC_PERC,                                     KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_PLUS,
-     KC_PIPE , KC_BSLS, KC_COLN, KC_SCLN, KC_MINS, KC_LBRC, KC_LCBR, _______, _______, KC_RCBR, KC_RBRC, KC_UNDS, KC_COMM,  KC_DOT, KC_SLSH, KC_QUES,
+      KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  ,                                     KC_MINS, KC_EQL , KC_LBRC, KC_RBRC, KC_BSLS, KC_GRV ,
+      KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 , _______, _______, _______, _______, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, _______,
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
 
@@ -259,34 +259,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  *                        `----------------------------------'  `----------------------------------'
 // Light LEDs 6 to 9 and 12 to 15 red when caps lock is active. Hard to ignore!
 const rgblight_segment_t PROGMEM my_capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {17, 2, HSV_RED},       // Light 4 LEDs, starting with LED 6
-    {48, 2, HSV_RED}       // Light 4 LEDs, starting with LED 12
+    {0, 6, HSV_RED},       // Light 4 LEDs, starting with LED 6
+    {31, 6, HSV_RED}       // Light 4 LEDs, starting with LED 12
 );
 
 // Light LEDs 11 & 12 in purple when keyboard layer 2 is active
 const rgblight_segment_t PROGMEM sym_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {21, 2, HSV_PURPLE}
+    {0, 6, HSV_PURPLE},
+    {31, 6, HSV_PURPLE}       // Light 4 LEDs, starting with LED 12
 );
 // Light LEDs 13 & 14 in green when keyboard layer 3 is active
 const rgblight_segment_t PROGMEM adjust_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {13, 2, HSV_GREEN}
+    {0, 6, HSV_GREEN},
+    {31, 6, HSV_GREEN}       // Light 4 LEDs, starting with LED 12
 );
 // rgb layer for layer num_move
 // number keys
 #define color_number_keys HSV_BLUE
 const rgblight_segment_t PROGMEM num_move_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-                                                                            {9, 2, color_number_keys}, // number keys
-                                                                            {17,2, color_number_keys}, // number keys
-                                                                            {23,1, color_number_keys}, // number keys
-                                                                            {36,2, color_number_keys}, // number keys
-                                                                            {44,2, color_number_keys}, // number keys
-                                                                            {50,1, color_number_keys}, // number keys
-                                                                            {35,1, HSV_GREEN}, // moveing keys
-                                                                            {38,1, HSV_YELLOW}, // moveing keys
-                                                                            {43,1, HSV_YELLOW}, // moveing keys
-                                                                            {46,1, HSV_GREEN},  // moveing keys
-                                                                            {49,1, HSV_RED},  // delete keys
-                                                                            {52,1, HSV_CYAN}  // moveing keys
+                                                                            {25,6, color_number_keys}, // number keys
+                                                                            {56,6, color_number_keys}, // number keys
+                                                                            {50,1, HSV_GREEN}, // moveing keys
+                                                                            {51,2, HSV_YELLOW}, // moveing keys
+                                                                            {53,1, HSV_GREEN},  // moveing keys
+                                                                            {54,1, HSV_RED},  // delete keys
+                                                                            {55,1, HSV_CYAN},  // screen shoot keys
+                                                                            {0, 6, HSV_BLUE},
+                                                                            {31, 6, HSV_BLUE}
                                                                             );
 
 
