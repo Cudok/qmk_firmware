@@ -115,17 +115,19 @@ TD(TD_SHIFT_CAPS), KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,                     
 
 // Light LEDs 6 to 9 and 12 to 15 red when caps lock is active. Hard to ignore!
 const rgblight_segment_t PROGMEM my_capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {5, 2, HSV_RED},       // Light 4 LEDs, starting with LED 6
-    {12, 4, HSV_RED}       // Light 4 LEDs, starting with LED 12
+    {0, 6, HSV_RED},       // Light 4 LEDs, starting with LED 6
+    {27, 6, HSV_RED}       // Light 4 LEDs, starting with LED 12
 );
 
 // Light LEDs 11 & 12 in purple when keyboard layer 2 is active
 const rgblight_segment_t PROGMEM my_layer2_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {21, 2, HSV_PURPLE}
+    {0, 6, HSV_PURPLE},
+    {27, 6, HSV_PURPLE}
 );
 // Light LEDs 13 & 14 in green when keyboard layer 3 is active
 const rgblight_segment_t PROGMEM my_layer3_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {13, 2, HSV_GREEN}
+    {0, 6, HSV_GREEN},
+    {27, 6, HSV_GREEN}
 );
 // rgb layer for layer num_move
 // number keys
@@ -142,7 +144,9 @@ const rgblight_segment_t PROGMEM num_move_layer[] = RGBLIGHT_LAYER_SEGMENTS(
                                                                             {43,1, HSV_YELLOW}, // moveing keys
                                                                             {46,1, HSV_GREEN},  // moveing keys
                                                                             {49,1, HSV_RED},  // delete keys
-                                                                            {52,1, HSV_CYAN}  // moveing keys
+                                                                            {52,1, HSV_CYAN},  // moveing keys
+                                                                            {0, 6, HSV_BLUE},
+                                                                            {27, 6, HSV_BLUE}
                                                                             );
 
 
