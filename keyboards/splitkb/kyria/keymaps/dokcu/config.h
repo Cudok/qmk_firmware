@@ -19,6 +19,7 @@
 
 #define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 200 // 100 ms is to small for me
+#define TAPPING_TOGGLE 2 // default is 5
 
 #ifdef RGBLIGHT_ENABLE
 #    define RGBLIGHT_LAYERS
