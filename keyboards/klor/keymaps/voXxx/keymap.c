@@ -63,18 +63,26 @@ enum custom_keycodes {
 
 // LEFT HAND HOME ROW MODS ├───────────────────────────────────┐
 
-#define GUI_A MT(MOD_LGUI, KC_A)
-#define ALT_R MT(MOD_LALT, KC_R)
+#define GUI_A LGUI_T(KC_A)
+#define ALT_S LALT_T(KC_S)
+#define ALT_R LALT_T(KC_R)
 #define CTL_S MT(MOD_LCTL, KC_S)
+#define CTL_F LCTL_T(KC_F)
 #define SHT_T MT(MOD_LSFT, KC_T)
+#define SHT_D LSFT_T(KC_D)
+#define Sym_Spc LT(Sym, KC_SPC)
 
 // RIGHT HAND HOME ROW MODS ├───────────────────────────────────┐
 
 #define SHT_N MT(MOD_RSFT, KC_N)
+#define SHT_K RSFT_T(KC_K)
 #define CTL_E MT(MOD_LCTL, KC_E)
+#define CTL_J RCTL_T(KC_J)
 #define ALT_I MT(MOD_LALT, KC_I)
+#define ALT_L LALT_T(KC_L)
+#define ALT_M RALT_T(KC_M)
 #define GUI_O MT(MOD_LGUI, KC_O)
-
+#define GUI_sc LGUI_T(KC_SCLN)
 
 // ┌───────────────────────────────────────────────────────────┐
 // │ d e f i n e   s o u n d s                                 │
@@ -112,11 +120,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                            └─────────┴─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┴─────────┘ */
 
    [_QWERTY] = LAYOUT_polydactyl(
- //╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷
-              KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                          KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,  
-    KC_TAB,   KC_A,     KC_S,     KC_D,     KC_F,     KC_G,                          KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
-    KC_DEL,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_MUTE,   KC_MPLY,  KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_RSFT,
-                                  KC_LCTL,  LOWER,    KC_SPC,   KC_LALT,   KC_LGUI,  KC_ENT,   RAISE,    KC_BSPC
+ //╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷
+              KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                              KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,
+    KC_TAB,   GUI_A,    ALT_S,    SHT_D,    CTL_F,    KC_G,                                              KC_H,     CTL_J,    SHT_K,    ALT_L,    GUI_sc,    KC_QUOT,
+    KC_DEL,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_MUTE,                       KC_MPLY,  KC_N,     ALT_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_RSFT,
+                                            KC_TAB,   Sym,      Sym_Spc,   KC_LALT,   KC_LGUI,  KC_ENT,   RAISE,    KC_BSPC
  ),
 
 /*
