@@ -38,7 +38,7 @@ enum klor_layers {
     /* _M_XYZ = Mac Os, _W_XYZ = Win/Linux */
     _QWERTY,
     _COLEMAK,
-    _LOWER,
+    _Sym,
     _RAISE,
     _ADJUST,
 };
@@ -50,7 +50,7 @@ enum klor_layers {
 enum custom_keycodes {
     QWERTY = SAFE_RANGE,
     COLEMAK,
-    LOWER,
+    Sym,
     RAISE,
     ADJUST,
     OS_SWAP,
@@ -146,7 +146,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               KC_Q,     KC_W,     KC_F,     KC_P,     KC_G,                          KC_J,     KC_L,     KC_U,     KC_Y,     KC_SCLN,  
     KC_TAB,   GUI_A,    ALT_R,    CTL_S,    SHT_T,    KC_D,                          KC_H,     SHT_N,    CTL_E,    ALT_I,    GUI_O,    KC_QUOT,
     KC_Q,     KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_LSFT,   KC_MPLY,  KC_K,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_BSLS,
-                                  KC_DEL,   LOWER,    KC_SPC,   KC_ESC,   KC_LGUI,  KC_ENT,   RAISE,    KC_BSPC
+                                  KC_DEL,   Sym,    KC_SPC,   KC_ESC,    KC_LGUI,  KC_ENT,   RAISE,    KC_BSPC
  ),
 
  /*
@@ -165,7 +165,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  │    ▼    │    ▼    │    ▼    │    ▼    ││    ▼    │    ▼    │ ADJUST  │    0    │  
                                  └─────────┴─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┴─────────┘ */ 
 
-   [_LOWER] = LAYOUT_polydactyl(
+   [_Sym] = LAYOUT_polydactyl(
  //╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷
               KC_CAPS,  KC_NUM,   KC_UP,    KC_EQL,   KC_LCBR,                       KC_RCBR,  KC_P7,    KC_P8,    KC_P9,    KC_PPLS,
     KC_ESC,   KC_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_LBRC,                       KC_RBRC,  KC_P4,    KC_P5,    KC_P6,    KC_MINS,  KC_DQT, 
@@ -519,7 +519,7 @@ layer_state_t layer_state_set_kb(layer_state_t state) {
           strcpy ( o_text, layer_state_str );
     }
   //return state;
-    return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+    return update_tri_layer_state(state, _Sym, _RAISE, _ADJUST);
 }
 
 
@@ -652,22 +652,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 #endif // HAPTIC_ENABLE
             }
             return false;
-        case LOWER:
+        case Sym:
             if (record->event.pressed) {
-                layer_on(_LOWER);
-                update_tri_layer(_LOWER, _RAISE, _ADJUST);
+                layer_on(_Sym);
+                update_tri_layer(_Sym, _RAISE, _ADJUST);
             } else {
-                layer_off(_LOWER);
-                update_tri_layer(_LOWER, _RAISE, _ADJUST);
+                layer_off(_Sym);
+                update_tri_layer(_Sym, _RAISE, _ADJUST);
             }
             return false;
         case RAISE:
             if (record->event.pressed) {
                 layer_on(_RAISE);
-                update_tri_layer(_LOWER, _RAISE, _ADJUST);
+                update_tri_layer(_Sym, _RAISE, _ADJUST);
             } else {
                 layer_off(_RAISE);
-                update_tri_layer(_LOWER, _RAISE, _ADJUST);
+                update_tri_layer(_Sym, _RAISE, _ADJUST);
             }
             return false;
         case ADJUST:
@@ -733,7 +733,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 // └───────────────────────────────────────────────────────────┘
 
     } else if (index == 1) {
-      if(IS_LAYER_ON(_LOWER)){
+      if(IS_LAYER_ON(_Sym)){
           if (clockwise) {
               tap_code(KC_MNXT);
           } else {
