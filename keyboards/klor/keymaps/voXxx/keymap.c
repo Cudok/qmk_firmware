@@ -504,7 +504,7 @@ layer_state_t layer_state_set_kb(layer_state_t state) {
                 strcpy ( layer_state_str, "BASE QWERTY");
                 break;
             case 2:
-                strcpy ( layer_state_str, "LOWER");
+                strcpy ( layer_state_str, "Sym");
                 break;
             case 3:
                 strcpy ( layer_state_str, "RAISE");
