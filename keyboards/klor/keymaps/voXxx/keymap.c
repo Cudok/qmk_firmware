@@ -83,7 +83,7 @@ enum custom_keycodes {
 #define ALT_M RALT_T(KC_M)
 #define GUI_O MT(MOD_LGUI, KC_O)
 #define GUI_sc LGUI_T(KC_SCLN)
-
+#define Nav_Enter LT(Sym, KC_TAB)
 // ┌───────────────────────────────────────────────────────────┐
 // │ d e f i n e   s o u n d s                                 │
 // └───────────────────────────────────────────────────────────┘
@@ -123,8 +123,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  //╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷
               KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                              KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,
     KC_TAB,   GUI_A,    ALT_S,    SHT_D,    CTL_F,    KC_G,                                              KC_H,     CTL_J,    SHT_K,    ALT_L,    GUI_sc,    KC_QUOT,
-    KC_DEL,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_MUTE,                       KC_MPLY,  KC_N,     ALT_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_RSFT,
-                                            KC_TAB,   Sym,      Sym_Spc,   KC_LALT,   KC_LGUI,  KC_ENT,   RAISE,    KC_BSPC
+    KC_DEL,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_MUTE,                       KC_MPLY,  KC_N,     ALT_M,    KC_COMM,  KC_DOT,   KC_SLSH,  KC_RSFT,
+                                            Media_Tab,KC_ESC,   Sym_Spc,   KC_SPC,  KC_LGUI,   Nav_Enter,RAISE,    KC_BSPC
  ),
 
 /*
