@@ -63,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                      KC_F11,   KC_F12, KC_VOLD, KC_VOLU, KC_MUTE, KC_TRNS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI, KC_LALT, KC_TRNS,   KC_TRNS, KC_TRNS , KC_TRNS
+                                          KC_TRNS, KC_LGUI, KC_TRNS,   KC_TRNS, KC_TRNS , KC_TRNS
   ),
 // symbol and function layer
   [_SYMB] = LAYOUT_split_3x6_3(
