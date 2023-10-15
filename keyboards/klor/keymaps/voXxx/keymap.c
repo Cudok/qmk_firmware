@@ -149,7 +149,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               KC_Q,     KC_W,     KC_F,     KC_P,     KC_G,                          KC_J,     KC_L,     KC_U,     KC_Y,     KC_SCLN,  
     KC_TAB,   GUI_A,    ALT_R,    CTL_S,    SHT_T,    KC_D,                          KC_H,     SHT_N,    CTL_E,    ALT_I,    GUI_O,    KC_QUOT,
     KC_Q,     KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_LSFT,   KC_MPLY,  KC_K,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_BSLS,
-                                  KC_DEL,   Sym,    KC_SPC,   KC_ESC,    KC_LGUI,  KC_ENT,   RAISE,    KC_BSPC
+                                            Media_Tab,KC_ESC,   Sym_Spc,   KC_SPC,  KC_LGUI,   Nav_Enter,Num,      KC_BSPC
  ),
 
  /*
@@ -173,7 +173,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                              KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,
     KC_TAB,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,                                              KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_QUOT,
     KC_DEL,   KC_Z,     KC_X,     KC_LCBR,  KC_LBRC,  KC_LPRN,  KC_MUTE,                       KC_MPLY,  KC_RPRN,  KC_RBRC,  KC_LCBR,  KC_BSLS,  KC_PIPE,  KC_RSFT,
-                                            Media_Tab,KC_ESC,   Sym_Spc,   KC_SPC,  KC_LGUI,   Nav_Enter,RAISE,    KC_BSPC
+                                            Media_Tab,KC_ESC,   Sym_Spc,   KC_SPC,  KC_LGUI,   Nav_Enter,Num,      KC_BSPC
  ),
 
  /*
@@ -197,7 +197,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                              KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,
     KC_TAB,   KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,   KC_PERC,                                           KC_CIRC,  KC_AMPR,  KC_PAST,  KC_LPRN,  KC_RPRN,  KC_QUOT,
     KC_DEL,   KC_Z,     KC_X,     KC_LCBR,  KC_LBRC,  KC_LPRN,  KC_MUTE,                       KC_MPLY,  KC_RPRN,  KC_RBRC,  KC_LCBR,  KC_BSLS,  KC_PIPE,  KC_RSFT,
-                                            Media_Tab,KC_ESC,   Sym_Spc,   KC_SPC,  KC_LGUI,   Nav_Enter,RAISE,    KC_BSPC
+                                            Media_Tab,KC_ESC,   Sym_Spc,   KC_SPC,  KC_LGUI,   Nav_Enter,Num,      KC_BSPC
  ),
  /*
    ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
