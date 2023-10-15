@@ -41,6 +41,7 @@ enum klor_layers {
     _Num,
     _Sym,
     _Nav,
+    _Fun,
     _ADJUST,
 };
 
@@ -54,6 +55,7 @@ enum custom_keycodes {
     Num,
     Sym,
     Nav,
+    Fun,
     ADJUST,
     OS_SWAP,
     MAKE_H,
@@ -87,6 +89,7 @@ enum custom_keycodes {
 #define GUI_O MT(MOD_LGUI, KC_O)
 #define GUI_sc LGUI_T(KC_SCLN)
 #define Nav_Enter LT(Nav, KC_ENTER)
+#define Fun_Bs LT(Fun, KC_BSPC)
 // ┌───────────────────────────────────────────────────────────┐
 // │ d e f i n e   s o u n d s                                 │
 // └───────────────────────────────────────────────────────────┘
@@ -127,7 +130,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                              KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,
     KC_TAB,   GUI_A,    ALT_S,    SHT_D,    CTL_F,    KC_G,                                              KC_H,     CTL_J,    SHT_K,    ALT_L,    GUI_sc,    KC_QUOT,
     KC_DEL,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_MUTE,                       KC_MPLY,  KC_N,     ALT_M,    KC_COMM,  KC_DOT,   KC_SLSH,  KC_RSFT,
-                                            Media_Tab,KC_ESC,   Sym_Spc,   KC_SPC,  KC_LGUI,   Nav_Enter,Num,      KC_BSPC
+                                            Media_Tab,KC_ESC,   Sym_Spc,   KC_SPC,  KC_LGUI,   Nav_Enter,Num,      Fun_Bs
  ),
 
 /*
@@ -149,7 +152,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               KC_Q,     KC_W,     KC_F,     KC_P,     KC_G,                          KC_J,     KC_L,     KC_U,     KC_Y,     KC_SCLN,  
     KC_TAB,   GUI_A,    ALT_R,    CTL_S,    SHT_T,    KC_D,                          KC_H,     SHT_N,    CTL_E,    ALT_I,    GUI_O,    KC_QUOT,
     KC_Q,     KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_LSFT,   KC_MPLY,  KC_K,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_BSLS,
-                                            Media_Tab,KC_ESC,   Sym_Spc,   KC_SPC,  KC_LGUI,   Nav_Enter,Num,      KC_BSPC
+                                            Media_Tab,KC_ESC,   Sym_Spc,   KC_SPC,  KC_LGUI,   Nav_Enter,Num,      Fun_Bs
  ),
 
  /*
@@ -173,7 +176,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                              KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,
     KC_TAB,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,                                              KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_QUOT,
     KC_DEL,   KC_Z,     KC_X,     KC_ASTR,  KC_PPLS,  KC_EQL,  KC_MUTE,                       KC_MPLY,   KC_UNDS,  KC_MINS,  KC_SLSH,  KC_BSLS,  KC_PIPE,  KC_RSFT,
-                                            Media_Tab,KC_ESC,  Sym_Spc,   KC_SPC,  KC_LGUI,   Nav_Enter, Num,      KC_BSPC
+                                            Media_Tab,KC_ESC,   Sym_Spc,   KC_SPC,  KC_LGUI,   Nav_Enter,Num,      Fun_Bs
  ),
 
  /*
@@ -197,7 +200,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                              KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,
     KC_TAB,   KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,   KC_PERC,                                           KC_CIRC,  KC_AMPR,  KC_PAST,  KC_LPRN,  KC_RPRN,  KC_QUOT,
     KC_DEL,   KC_Z,     KC_X,     KC_LCBR,  KC_LBRC,  KC_LPRN,  KC_MUTE,                       KC_MPLY,  KC_RPRN,  KC_RBRC,  KC_LCBR,  KC_BSLS,  KC_PIPE,  KC_RSFT,
-                                            Media_Tab,KC_ESC,   Sym_Spc,   KC_SPC,  KC_LGUI,   Nav_Enter,Num,      KC_BSPC
+                                            Media_Tab,KC_ESC,   Sym_Spc,   KC_SPC,  KC_LGUI,   Nav_Enter,Num,      Fun_Bs
  ),
  /*
    ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
@@ -220,9 +223,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                              KC_Y,     KC_UNDO,  KC_CUT,   KC_COPY,  KC_PASTE,
     KC_TAB,   GUI_A,    ALT_S,    SHT_D,    CTL_F,    KC_G,                                              KC_CAPS,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RIGHT, KC_QUOT,
     KC_DEL,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_MUTE,                       KC_MPLY,  KC_INS,   KC_HOME,  KC_PGDN,  KC_PGUP,  KC_END,   KC_RSFT,
-                                            Media_Tab,KC_ESC,   Sym_Spc,   KC_SPC,  KC_LGUI,   Nav_Enter,Num,      KC_BSPC
+                                            Media_Tab,KC_ESC,   Sym_Spc,   KC_SPC,  KC_LGUI,   Nav_Enter,Num,      Fun_Bs
  ),
  /*
+   ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
+
+   ┌───────────────────────────────────────────────────────────┐
+   │ function keys                                             │
+   └───────────────────────────────────────────────────────────┘
+             ┌─────────┬─────────┬─────────┬─────────┬─────────┐   __________________________________   ┌─────────┬─────────┬─────────┬─────────┬─────────┐
+             │    Q    │    W    │    E    │    R    │    T    │  /                                  \  │    Y    │    U    │    I    │    O    │    P    │
+   ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤ /                                    \ ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
+   │   F12   │   F1    │   F2    │   F3    │   F4    │   F5    |/      ────────           ────────     \│   F6    │    F7   │    F8   │    F9   │   F10   │   F11   │
+   ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤      │Mute/Vol│         │PLY/Scrol│    ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+   │Shift/Cap│    Z    │    X    │    C    │    V    │    B    │       ────────           ────────      │    N    │    M    │    ,    │    .    │    /    │  AltR   │
+   └─────────┴─────────┴─────────┴─────────┼─────────┼─────────┼─────────┬─────────┐┌─────────┬─────────┼─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
+                                           │Media(TAB)│  Esc   │Sym(Spc) │         ││         │Nav(ENTER)│  Num   │Fun(BSpc)│
+                                           └─────────┴─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┴─────────┘ */
+
+   [_Fun] = LAYOUT_polydactyl(
+ //╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷
+              KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                              KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,
+    KC_F12,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,                                             KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,
+    KC_DEL,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_MUTE,                       KC_MPLY,  KC_N,     ALT_M,    KC_COMM,  KC_DOT,   KC_SLSH,  KC_RSFT,
+                                            Media_Tab,KC_ESC,   Sym_Spc,   KC_SPC,  KC_LGUI,   Nav_Enter,Num,      Fun_Bs
+ ),
+
+/*
    ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
    
    ┌───────────────────────────────────────────────────────────┐
