@@ -40,7 +40,7 @@ enum klor_layers {
     _COLEMAK,
     _Num,
     _Sym,
-    _RAISE,
+    _Nav,
     _ADJUST,
 };
 
@@ -53,7 +53,7 @@ enum custom_keycodes {
     COLEMAK,
     Num,
     Sym,
-    RAISE,
+    Nav,
     ADJUST,
     OS_SWAP,
     MAKE_H,
@@ -86,7 +86,7 @@ enum custom_keycodes {
 #define ALT_M RALT_T(KC_M)
 #define GUI_O MT(MOD_LGUI, KC_O)
 #define GUI_sc LGUI_T(KC_SCLN)
-#define Nav_Enter LT(Sym, KC_TAB)
+#define Nav_Enter LT(Nav, KC_ENTER)
 // ┌───────────────────────────────────────────────────────────┐
 // │ d e f i n e   s o u n d s                                 │
 // └───────────────────────────────────────────────────────────┘
@@ -201,26 +201,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  ),
  /*
    ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
-   
-   ┌───────────────────────────────────────────────────────────┐
-   │ r a i s e                                                 │
-   └───────────────────────────────────────────────────────────┘
-             ┌─────────┬─────────┬─────────┬─────────┬─────────┐                    ┌─────────┬─────────┬─────────┬─────────┬─────────┐
-             │    !    │    @    │    #    │    $    │    %    │ ╭╮╭╮╭╮╭╮╭╮╭╮╭╮╭╮╭╮ │    ^    │    &    │         │    °    │    /    │   
-   ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤ │╰╯╰╯╰╯╰╯╰╯╰╯╰╯╰╯│ ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
-   │         │         │         │         │         │         ├─╯                ╰─┤         │         │         │         │         │         │
-   ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤╭────────╮╭────────╮├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-   │         │         │         │         │         │         ││  MUTE  ││PLY/PSE ││         │         │         │         │         │         │
-   └─────────┴─────────┴─────────┼─────────┼─────────┼─────────┼╰────────╯╰────────╯┼─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
-                                 │         │ ADJUST  │    ▼    │    ▼    ││    ▼    │    ▼    │    ▼    │    ▼    │  
-                                 └─────────┴─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┴─────────┘ */ 
 
-   [_RAISE] = LAYOUT_polydactyl(
- //╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷
-              KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,   KC_PERC,                       KC_CIRC,  KC_AMPR,  RALT(KC_U),RALT(KC_3),KC_BSLS,
-    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  
-    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_MUTE,   KC_MPLY,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX, 
-                                  _______,  _______,  _______,  _______,   _______,  _______,  _______,  _______
+   ┌───────────────────────────────────────────────────────────┐
+   │ Navigation                                                │
+   └───────────────────────────────────────────────────────────┘
+             ┌─────────┬─────────┬─────────┬─────────┬─────────┐   __________________________________   ┌─────────┬─────────┬─────────┬─────────┬─────────┐
+             │    Q    │    W    │    E    │    R    │    T    │  /                                  \  │  Redo   │  Undo   │   Cut   │  Copy   │  Past   │
+   ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤ /                                    \ ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
+   │  Media  │ GUI(A)  │ Alt(S)  │Shift(D) │ Ctl(F)  │    G    |/      ────────           ────────     \│  Caps   │  Left   │  down   │   up    │  right  │    "    │
+   ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤      │Mute/Vol│         │PLY/Scrol│    ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+   │Shift/Cap│    Z    │    X    │    C    │    V    │    B    │       ────────           ────────      │  Insert │  Home   │page down│ page up │  End    │  AltR   │
+   └─────────┴─────────┴─────────┴─────────┼─────────┼─────────┼─────────┬─────────┐┌─────────┬─────────┼─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
+                                           │Media(TAB)│  Esc   │Sym(Spc) │         ││         │Nav(ENTER)│  Num   │Fun(BSpc)│
+                                           └─────────┴─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┴─────────┘ */
+
+   [_Nav] = LAYOUT_polydactyl(
+ //╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷
+              KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                              KC_Y,     KC_UNDO,  KC_CUT,   KC_COPY,  KC_PASTE,
+    KC_TAB,   GUI_A,    ALT_S,    SHT_D,    CTL_F,    KC_G,                                              KC_CAPS,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RIGHT, KC_QUOT,
+    KC_DEL,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_MUTE,                       KC_MPLY,  KC_INS,   KC_HOME,  KC_PGDN,  KC_PGUP,  KC_END,   KC_RSFT,
+                                            Media_Tab,KC_ESC,   Sym_Spc,   KC_SPC,  KC_LGUI,   Nav_Enter,Num,      KC_BSPC
  ),
  /*
    ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
@@ -537,7 +537,7 @@ layer_state_t layer_state_set_kb(layer_state_t state) {
                 strcpy ( layer_state_str, "Sym");
                 break;
             case 4:
-                strcpy ( layer_state_str, "RAISE");
+                strcpy ( layer_state_str, "Nav");
                 break;
             case 5:
                 strcpy ( layer_state_str, "ADJUST");
