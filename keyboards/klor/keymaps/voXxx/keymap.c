@@ -163,7 +163,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤ /                                    \ ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
    │  Media  │    1    │    2    │    3    │    4    │    5    |/      ────────           ────────     \│    6    │    7    │    8    │    9    │    0    │    "    │
    ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤      │Mute/Vol│         │PLY/Scrol│    ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-   │Shift/Cap│    Z    │    X    │    {    │    [    │    (    │       ────────           ────────      │    )    │    ]    │    }    │    \    │    |    │  AltR   │
+   │Shift/Cap│    Z    │    X    │    *    │    +    │    =    │       ────────           ────────      │    _    │    -    │    /    │    \    │    |    │  AltR   │
    └─────────┴─────────┴─────────┴─────────┼─────────┼─────────┼─────────┬─────────┐┌─────────┬─────────┼─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
                                            │Media(TAB)│  Esc   │Sym(Spc) │         ││         │Nav(ENTER)│  Num   │Fun(BSpc)│
                                            └─────────┴─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┴─────────┘ */
@@ -172,8 +172,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  //╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷
               KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                              KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,
     KC_TAB,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,                                              KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_QUOT,
-    KC_DEL,   KC_Z,     KC_X,     KC_LCBR,  KC_LBRC,  KC_LPRN,  KC_MUTE,                       KC_MPLY,  KC_RPRN,  KC_RBRC,  KC_LCBR,  KC_BSLS,  KC_PIPE,  KC_RSFT,
-                                            Media_Tab,KC_ESC,   Sym_Spc,   KC_SPC,  KC_LGUI,   Nav_Enter,Num,      KC_BSPC
+    KC_DEL,   KC_Z,     KC_X,     KC_ASTR,  KC_PPLS,  KC_EQL,  KC_MUTE,                       KC_MPLY,   KC_UNDS,  KC_MINS,  KC_SLSH,  KC_BSLS,  KC_PIPE,  KC_RSFT,
+                                            Media_Tab,KC_ESC,  Sym_Spc,   KC_SPC,  KC_LGUI,   Nav_Enter, Num,      KC_BSPC
  ),
 
  /*
