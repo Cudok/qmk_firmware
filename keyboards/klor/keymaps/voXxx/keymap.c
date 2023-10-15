@@ -38,6 +38,7 @@ enum klor_layers {
     /* _M_XYZ = Mac Os, _W_XYZ = Win/Linux */
     _QWERTY,
     _COLEMAK,
+    _Num,
     _Sym,
     _RAISE,
     _ADJUST,
@@ -50,6 +51,7 @@ enum klor_layers {
 enum custom_keycodes {
     QWERTY = SAFE_RANGE,
     COLEMAK,
+    Num,
     Sym,
     RAISE,
     ADJUST,
@@ -125,7 +127,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                              KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,
     KC_TAB,   GUI_A,    ALT_S,    SHT_D,    CTL_F,    KC_G,                                              KC_H,     CTL_J,    SHT_K,    ALT_L,    GUI_sc,    KC_QUOT,
     KC_DEL,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_MUTE,                       KC_MPLY,  KC_N,     ALT_M,    KC_COMM,  KC_DOT,   KC_SLSH,  KC_RSFT,
-                                            Media_Tab,KC_ESC,   Sym_Spc,   KC_SPC,  KC_LGUI,   Nav_Enter,RAISE,    KC_BSPC
+                                            Media_Tab,KC_ESC,   Sym_Spc,   KC_SPC,  KC_LGUI,   Nav_Enter,Num,      KC_BSPC
  ),
 
 /*
@@ -148,6 +150,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,   GUI_A,    ALT_R,    CTL_S,    SHT_T,    KC_D,                          KC_H,     SHT_N,    CTL_E,    ALT_I,    GUI_O,    KC_QUOT,
     KC_Q,     KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_LSFT,   KC_MPLY,  KC_K,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_BSLS,
                                   KC_DEL,   Sym,    KC_SPC,   KC_ESC,    KC_LGUI,  KC_ENT,   RAISE,    KC_BSPC
+ ),
+
+ /*
+   ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
+
+   ┌───────────────────────────────────────────────────────────┐
+   │ Numbers                                                   │
+   └───────────────────────────────────────────────────────────┘
+             ┌─────────┬─────────┬─────────┬─────────┬─────────┐   __________________________________   ┌─────────┬─────────┬─────────┬─────────┬─────────┐
+             │    Q    │    W    │    E    │    R    │    T    │  /                                  \  │    Y    │    U    │    I    │    O    │    P    │
+   ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤ /                                    \ ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
+   │  Media  │    1    │    2    │    3    │    4    │    5    |/      ────────           ────────     \│    6    │    7    │    8    │    9    │    0    │    "    │
+   ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤      │Mute/Vol│         │PLY/Scrol│    ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+   │Shift/Cap│    Z    │    X    │    {    │    [    │    (    │       ────────           ────────      │    )    │    ]    │    }    │    \    │    |    │  AltR   │
+   └─────────┴─────────┴─────────┴─────────┼─────────┼─────────┼─────────┬─────────┐┌─────────┬─────────┼─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
+                                           │Media(TAB)│  Esc   │Sym(Spc) │         ││         │Nav(ENTER)│  Num   │Fun(BSpc)│
+                                           └─────────┴─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┴─────────┘ */
+
+   [_Num] = LAYOUT_polydactyl(
+ //╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷
+              KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                              KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,
+    KC_TAB,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,                                              KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_QUOT,
+    KC_DEL,   KC_Z,     KC_X,     KC_LCBR,  KC_LBRC,  KC_LPRN,  KC_MUTE,                       KC_MPLY,  KC_RPRN,  KC_RBRC,  KC_LCBR,  KC_BSLS,  KC_PIPE,  KC_RSFT,
+                                            Media_Tab,KC_ESC,   Sym_Spc,   KC_SPC,  KC_LGUI,   Nav_Enter,RAISE,    KC_BSPC
  ),
 
  /*
@@ -505,12 +531,15 @@ layer_state_t layer_state_set_kb(layer_state_t state) {
                 strcpy ( layer_state_str, "BASE QWERTY");
                 break;
             case 2:
-                strcpy ( layer_state_str, "Sym");
+                strcpy ( layer_state_str, "Num");
                 break;
             case 3:
-                strcpy ( layer_state_str, "RAISE");
+                strcpy ( layer_state_str, "Sym");
                 break;
             case 4:
+                strcpy ( layer_state_str, "RAISE");
+                break;
+            case 5:
                 strcpy ( layer_state_str, "ADJUST");
                 break;
             default:
@@ -520,7 +549,7 @@ layer_state_t layer_state_set_kb(layer_state_t state) {
           strcpy ( o_text, layer_state_str );
     }
   //return state;
-    return update_tri_layer_state(state, _Sym, _RAISE, _ADJUST);
+    return update_tri_layer_state(state, _Sym, _Num, _ADJUST);
 }
 
 
@@ -653,22 +682,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 #endif // HAPTIC_ENABLE
             }
             return false;
+        case Num:
+            if (record->event.pressed) {
+                layer_on(_Num);
+                update_tri_layer(_Sym, _Num, _ADJUST);
+            } else {
+                layer_off(_Num);
+                update_tri_layer(_Sym, _Num, _ADJUST);
+            }
+            return false;
         case Sym:
             if (record->event.pressed) {
                 layer_on(_Sym);
-                update_tri_layer(_Sym, _RAISE, _ADJUST);
+                update_tri_layer(_Sym, _Num, _ADJUST);
             } else {
                 layer_off(_Sym);
-                update_tri_layer(_Sym, _RAISE, _ADJUST);
-            }
-            return false;
-        case RAISE:
-            if (record->event.pressed) {
-                layer_on(_RAISE);
-                update_tri_layer(_Sym, _RAISE, _ADJUST);
-            } else {
-                layer_off(_RAISE);
-                update_tri_layer(_Sym, _RAISE, _ADJUST);
+                update_tri_layer(_Sym, _Num, _ADJUST);
             }
             return false;
         case ADJUST:
