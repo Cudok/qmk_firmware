@@ -30,6 +30,11 @@ for more options.
 
 #define COMBO_COUNT 1
 
+// ┌─────────────────────────────────────────────────┐
+// │ s p l i t   c o m m u n i c a t i o n           │
+// └─────────────────────────────────────────────────┘
+
+#define SPLIT_LAYER_STATE_ENABLE
 
 // RGB matrix support
 #ifdef RGB_MATRIX_ENABLE
