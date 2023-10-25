@@ -37,6 +37,7 @@
 enum klor_layers {
     /* _M_XYZ = Mac Os, _W_XYZ = Win/Linux */
     _QWERTY,
+    _NAV,
     _ADJUST,
 };
 
@@ -55,8 +56,8 @@ enum klor_layers {
 #define SHT_T MT(MOD_LSFT, KC_T)
 #define SHT_D LSFT_T(KC_D)
 #define ADJUST MO(_ADJUST)
-#define QWERTY MO(_QWERTY)                      \
-//#define Nav_Spc LT(Nav, KC_SPC)
+#define QWERTY MO(_QWERTY)
+#define NAV_SPC LT(_NAV, KC_SPC)
 //#define Medi_Esc LT(Medi, KC_ESC)
 //#define Mos_Tab LT(Mouse, KC_TAB)
 
@@ -114,6 +115,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                              KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,
     KC_TAB,   GUI_A,    ALT_S,    SHT_D,    CTL_F,    KC_G,                                              KC_H,     CTL_J,    SHT_K,    ALT_L,    GUI_sc,    KC_QUOT,
     KC_DEL,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_MUTE,                       KC_MPLY,  KC_N,     ALT_M,    KC_COMM,  KC_DOT,   KC_SLSH,  KC_RSFT,
+                                            KC_ESC,   NAV_SPC,  KC_TAB,   ADJUST,    KC_LGUI,  KC_ENTER, KC_BSPC,  KC_DEL
+ ),
+
+ /*
+   ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
+
+   ┌───────────────────────────────────────────────────────────┐
+   │ n a v i g a t i o n                                       │
+   └───────────────────────────────────────────────────────────┘
+             ┌─────────┬─────────┬─────────┬─────────┬─────────┐   __________________________________   ┌─────────┬─────────┬─────────┬─────────┬─────────┐
+             │    Q    │    W    │    E    │    R    │    T    │  /                                  \  │  redo   │  undo   │   cut   │  copy   │  paste  │
+   ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤ /                                    \ ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
+   │   Tab   │ GUI(A)  │ Alt(S)  │Shift(D) │ Ctl(F)  │    G    |/      ────────           ────────     \│  left   │  down   │    up   │  right  │  Caps   │    "    │
+   ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤      │Mute/Vol│         │PLY/Scrol│    ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+   │Shift/Cap│    Z    │    X    │    C    │    V    │    B    │       ────────           ────────      │  insert │page down│ page up │  home   │  end    │  AltR   │
+   └─────────┴─────────┴─────────┴─────────┼─────────┼─────────┼─────────┬─────────┐┌─────────┬─────────┼─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
+                                           │Medi(Esc)│Nav(Spc) │Mos(TAB) │         ││         │Sym(ENT) │Num(BSpc)│Fun(Del) │
+                                           └─────────┴─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┴─────────┘ */
+
+   [_NAV] = LAYOUT_polydactyl(
+ //╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷
+              KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                              KC_Y,     KC_UNDO,  KC_CUT,   KC_COPY,  KC_PSTE,
+    KC_TAB,   GUI_A,    ALT_S,    SHT_D,    CTL_F,    KC_G,                                              KC_LEFT,  KC_DOWN,  KC_UP,    KC_RIGHT, KC_CAPS,  KC_QUOT,
+    KC_DEL,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_MUTE,                       KC_MPLY,  KC_INS,   KC_PGDN,  KC_PGUP,  KC_HOME,  KC_END,   KC_RSFT,
                                             KC_ESC,   KC_SPC,   KC_TAB,   ADJUST,    KC_LGUI,  KC_ENTER, KC_BSPC,  KC_DEL
  ),
 
@@ -172,10 +197,10 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     }
     for (uint8_t i = 19; i < 24; i++) {
         switch(get_highest_layer(layer_state|default_layer_state)) {
-            case 2:
+            case _ADJUST:
                 rgb_matrix_set_color(i, RGB_BLUE);
                 break;
-            case _ADJUST:
+            case _NAV:
                 rgb_matrix_set_color(i, RGB_YELLOW);
                 break;
             default:
