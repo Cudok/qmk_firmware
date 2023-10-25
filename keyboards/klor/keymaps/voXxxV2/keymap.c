@@ -165,10 +165,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #if RGB_MATRIX_ENABLE
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     if (host_keyboard_led_state().caps_lock) {
-      rgb_matrix_set_color(5, RGB_BLUE);
+      for (uint8_t i = 4; i < 8; i++) {
+        rgb_matrix_set_color(i, RGB_BLUE);
+      }
       //RGB_MATRIX_INDICATOR_SET_COLOR(5, 255, 255, 255); // assuming caps lock is at led #5
-    } else {
-        RGB_MATRIX_INDICATOR_SET_COLOR(5, 0, 0, 0);
     }
     return false;
 }
