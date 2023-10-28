@@ -212,9 +212,18 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
             }
             break;
         default:
-            for (uint8_t i = 19; i < 24; i++) {
-                rgb_matrix_set_color(i, RGB_RED);
-            }
+            // GUI color: Red, index: 17 and 38
+            rgb_matrix_set_color(17, RGB_RED);
+            rgb_matrix_set_color(38, RGB_RED);
+            // ALT color: Orange, index: 14 and 35
+            rgb_matrix_set_color(14, RGB_ORANGE);
+            rgb_matrix_set_color(35, RGB_ORANGE);
+            // SHIFT color: Yellow, index: 11 and 32
+            rgb_matrix_set_color(11, RGB_YELLOW);
+            rgb_matrix_set_color(32, RGB_YELLOW);
+            // CTRL color: White, index: 07 and 28
+            rgb_matrix_set_color(07, RGB_WHITE);
+            rgb_matrix_set_color(28, RGB_WHITE);
             break;
         }
     return false;
