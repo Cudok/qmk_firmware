@@ -197,10 +197,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #if RGB_MATRIX_ENABLE
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     if (host_keyboard_led_state().caps_lock) {
-      for (uint8_t i = 4; i < 8; i++) {
-        rgb_matrix_set_color(i, RGB_BLUE);
+      for (uint8_t i = 4; i < 7; i++) {
+          rgb_matrix_set_color(i, RGB_RED);
       }
-      //RGB_MATRIX_INDICATOR_SET_COLOR(5, 255, 255, 255); // assuming caps lock is at led #5
+      // not possible to change color of the secondary split half in case of caps look
+      /***************************************/
+      /* for (uint8_t i = 25; i < 27; i++) { */
+      /*   rgb_matrix_set_color(i, RGB_RED); */
+      /* }                                   */
+      /* rgb_matrix_set_color(25, RGB_RED);  */
+      /* rgb_matrix_set_color(26, RGB_RED);  */
+      /* rgb_matrix_set_color(27, RGB_RED);  */
+      /***************************************/
+      /* RGB_MATRIX_INDICATOR_SET_COLOR(25, 255, 255, 255); // assuming caps lock is at led #5 */
     }
     switch(get_highest_layer(layer_state|default_layer_state)) {
         case _ADJUST:
