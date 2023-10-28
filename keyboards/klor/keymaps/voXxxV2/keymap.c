@@ -25,6 +25,13 @@
 #endif //HAPTIC ENABLE
 
 
+void rgb_block(int led_start, int led_end, uint8_t red, uint8_t green, uint8_t blue) {
+
+    for (uint8_t i = led_start; i < led_end; i++) {
+        rgb_matrix_set_color(i, red, green, blue);
+    }
+}
+
 // ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 // │ D E F I N I T I O N S                                                                                                                      │
 // └────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
@@ -195,18 +202,21 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
       }
       //RGB_MATRIX_INDICATOR_SET_COLOR(5, 255, 255, 255); // assuming caps lock is at led #5
     }
-    for (uint8_t i = 19; i < 24; i++) {
-        switch(get_highest_layer(layer_state|default_layer_state)) {
-            case _ADJUST:
-                rgb_matrix_set_color(i, RGB_BLUE);
-                break;
-            case _NAV:
+    switch(get_highest_layer(layer_state|default_layer_state)) {
+        case _ADJUST:
+            rgb_block(18,24, RGB_GREEN);
+            break;
+        case _NAV:
+            for (uint8_t i = 19; i < 24; i++) {
                 rgb_matrix_set_color(i, RGB_YELLOW);
-                break;
-            default:
-                break;
+            }
+            break;
+        default:
+            for (uint8_t i = 19; i < 24; i++) {
+                rgb_matrix_set_color(i, RGB_RED);
+            }
+            break;
         }
-    }
     return false;
 }
 
