@@ -216,9 +216,25 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
             rgb_block(18,24, RGB_GREEN);
             break;
         case _NAV:
-            for (uint8_t i = 19; i < 24; i++) {
-                rgb_matrix_set_color(i, RGB_YELLOW);
-            }
+            // arrows color: green
+            rgb_matrix_set_color(25, RGB_GREEN);
+            rgb_matrix_set_color(28, RGB_GREEN);
+            rgb_matrix_set_color(32, RGB_GREEN);
+            rgb_matrix_set_color(35, RGB_GREEN);
+            // caps lock: Azure
+            rgb_matrix_set_color(39, RGB_RED);
+            // redo and undo: Blue
+            rgb_block(26,27, RGB_BLUE);
+            // cut, copy and paste: Azure
+            rgb_matrix_set_color(39, RGB_AZURE);
+            rgb_block(33,34, RGB_AZURE);
+            // insert: Orange
+            rgb_matrix_set_color(24, RGB_ORANGE);
+            // page down and up: Pink
+            rgb_matrix_set_color(29, RGB_PINK);
+            rgb_matrix_set_color(31, RGB_PINK);
+            // home and end: Purple
+            rgb_block(36,37, RGB_PURPLE);
             break;
         default:
             // GUI color: Red, index: 17 and 38
