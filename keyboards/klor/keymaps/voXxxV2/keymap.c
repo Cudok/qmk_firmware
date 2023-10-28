@@ -27,7 +27,7 @@
 
 void rgb_block(int led_start, int led_end, uint8_t red, uint8_t green, uint8_t blue) {
 
-    for (uint8_t i = led_start; i < led_end; i++) {
+    for (uint8_t i = led_start; i < led_end+1; i++) {
         rgb_matrix_set_color(i, red, green, blue);
     }
 }
