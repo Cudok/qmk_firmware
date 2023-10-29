@@ -313,7 +313,12 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
             rgb_home_row('l');
             break;
         case _NUM:
-            rgb_block(4,19, RGB_RED);
+            rgb_block(8,15, RGB_BLUE);
+            rgb_matrix_set_color(2, RGB_BLUE);
+            rgb_block(3,5, RGB_AZURE);
+            rgb_matrix_set_color(1, RGB_AZURE);
+            rgb_matrix_set_color(9, RGB_AZURE);
+            rgb_block(16,18, RGB_AZURE);
             rgb_home_row('r');
             break;
         default:
@@ -338,6 +343,9 @@ bool render_status(void) {
             break;
         case _NAV:
             oled_write_P(PSTR("N A V\n"), false);
+            break;
+        case _NUM:
+            oled_write_P(PSTR("N U M\n"), false);
             break;
         case _ADJUST:
             oled_write_P(PSTR("A D J\n"), false);
