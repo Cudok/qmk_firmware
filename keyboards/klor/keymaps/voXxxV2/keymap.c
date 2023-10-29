@@ -241,7 +241,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               AU_TOGG,  HF_TOGG,  RGB_HUI,  RGB_MOD,  XXXXXXX,                                           _______,  _______,  _______,  _______,  _______,
     QK_BOOT,  DB_TOGG,  QWERTY,   RGB_SAI,  RGB_VAI,  XXXXXXX,                                           _______,  _______,  _______,  _______,  _______,   _______,
     XXXXXXX,  XXXXXXX,  XXXXXXX,  RGB_SAD,  RGB_VAD,  XXXXXXX,  _______,                       _______,  _______,  _______,  _______,  _______,  _______,   _______,
-                                            _______,  _______,  _______,  _______,   _______,  _______,  _______,  _______)
+                                            _______,  _______,  _______,  _______,   _______,  _______,  _______,  _______
+)
 };
 
 
