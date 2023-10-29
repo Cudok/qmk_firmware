@@ -31,6 +31,54 @@ void rgb_block(int led_start, int led_end, uint8_t red, uint8_t green, uint8_t b
         rgb_matrix_set_color(i, red, green, blue);
     }
 }
+void rgb_home_row(char side){
+
+    // GUI color: Red, index: 17 and 38
+    // left
+    if (side == 'l'){
+        rgb_matrix_set_color(17, RGB_RED);
+    // right
+    } else if (side == 'r') {
+        rgb_matrix_set_color(38, RGB_RED);
+    }
+    else {
+        rgb_matrix_set_color(17, RGB_RED);
+        rgb_matrix_set_color(38, RGB_RED);
+    }
+    // ALT color: Orange, index: 14 and 35
+    if (side == 'l'){
+        rgb_matrix_set_color(14, RGB_ORANGE);
+    // right
+    } else if (side == 'r') {
+        rgb_matrix_set_color(35, RGB_ORANGE);
+    }
+    else {
+        rgb_matrix_set_color(14, RGB_ORANGE);
+        rgb_matrix_set_color(35, RGB_ORANGE);
+    }
+    // SHIFT color: Yellow, index: 11 and 32
+    if (side == 'l'){
+        rgb_matrix_set_color(11, RGB_YELLOW);
+    // right
+    } else if (side == 'r') {
+        rgb_matrix_set_color(32, RGB_YELLOW);
+    }
+    else {
+        rgb_matrix_set_color(11, RGB_YELLOW);
+        rgb_matrix_set_color(32, RGB_YELLOW);
+    }
+    // CTRL color: White, index: 07 and 28
+    if (side == 'l'){
+        rgb_matrix_set_color(07, RGB_WHITE);
+    // right
+    } else if (side == 'r') {
+        rgb_matrix_set_color(28, RGB_WHITE);
+    }
+    else {
+        rgb_matrix_set_color(07, RGB_WHITE);
+        rgb_matrix_set_color(28, RGB_WHITE);
+    }
+}
 
 // ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 // │ D E F I N I T I O N S                                                                                                                      │
@@ -235,20 +283,10 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
             rgb_matrix_set_color(31, RGB_PINK);
             // home and end: Purple
             rgb_block(36,37, RGB_PURPLE);
+            rgb_home_row('l');
             break;
         default:
-            // GUI color: Red, index: 17 and 38
-            rgb_matrix_set_color(17, RGB_RED);
-            rgb_matrix_set_color(38, RGB_RED);
-            // ALT color: Orange, index: 14 and 35
-            rgb_matrix_set_color(14, RGB_ORANGE);
-            rgb_matrix_set_color(35, RGB_ORANGE);
-            // SHIFT color: Yellow, index: 11 and 32
-            rgb_matrix_set_color(11, RGB_YELLOW);
-            rgb_matrix_set_color(32, RGB_YELLOW);
-            // CTRL color: White, index: 07 and 28
-            rgb_matrix_set_color(07, RGB_WHITE);
-            rgb_matrix_set_color(28, RGB_WHITE);
+            rgb_home_row('b');
             break;
         }
     return false;
