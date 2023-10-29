@@ -261,7 +261,12 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     }
     switch(get_highest_layer(layer_state|default_layer_state)) {
         case _ADJUST:
-            rgb_block(18,24, RGB_GREEN);
+            rgb_matrix_set_color(19, RGB_TURQUOISE);
+            rgb_matrix_set_color(12, RGB_AZURE);
+            rgb_block(10,11, RGB_GREEN);
+            rgb_matrix_set_color(6, RGB_CYAN);
+            rgb_block(7,8, RGB_BLUE);
+            rgb_home_row('r');
             break;
         case _NAV:
             // arrows color: green
