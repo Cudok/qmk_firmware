@@ -191,10 +191,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
    [_NAV] = LAYOUT_polydactyl(
  //╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷
-              KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                              KC_Y,     KC_UNDO,  KC_CUT,   KC_COPY,  KC_PSTE,
-    KC_TAB,   GUI_A,    ALT_S,    SHT_D,    CTL_F,    KC_G,                                              KC_LEFT,  KC_DOWN,  KC_UP,    KC_RIGHT, KC_CAPS,  KC_QUOT,
-    KC_DEL,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_MUTE,                       KC_MPLY,  KC_INS,   KC_PGDN,  KC_PGUP,  KC_HOME,  KC_END,   KC_RSFT,
-                                            KC_ESC,   KC_SPC,   KC_TAB,   ADJUST,    KC_LGUI,  KC_ENTER, KC_BSPC,  KC_DEL
+              _______,  _______,  _______,  _______,  _______,                                           _______,  KC_UNDO,  KC_CUT,   KC_COPY,  KC_PSTE,
+    _______,  _______,  _______,  _______,  _______,  _______,                                           KC_LEFT,  KC_DOWN,  KC_UP,    KC_RIGHT, KC_CAPS,  _______,
+    _______,  _______,  _______,  _______,  _______,  _______,  _______,                       _______,  KC_INS,   KC_PGDN,  KC_PGUP,  KC_HOME,  KC_END,   _______,
+                                            _______,  _______,  _______,  _______,   _______,  _______,  _______,  _______
  ),
 
 /*
