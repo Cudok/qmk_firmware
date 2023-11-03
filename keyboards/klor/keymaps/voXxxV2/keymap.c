@@ -81,22 +81,22 @@ void rgb_home_row(char side){
 }
 void rgb_indicator(char side, uint8_t red, uint8_t green, uint8_t blue){
 
-    // colors outer colonm and inner upper corner
+    // colors outer column and inner column
     // left
     if (side == 'l'){
         rgb_block(19, 20, red, green, blue);
-        rgb_block(4, 6, red, green, blue);
+        rgb_block(3, 5, red, green, blue);
     // right
     } else if (side == 'r') {
         rgb_block(40, 41, red, green, blue);
-        rgb_block(25, 27, red, green, blue);
+        rgb_block(24, 26, red, green, blue);
     }
     // both sides
     else {
         rgb_block(19, 20, red, green, blue);
-        rgb_block(4, 6, red, green, blue);
+        rgb_block(3, 5, red, green, blue);
         rgb_block(40, 41, red, green, blue);
-        rgb_block(25, 27, red, green, blue);
+        rgb_block(24, 26, red, green, blue);
     }
 }
 // ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
