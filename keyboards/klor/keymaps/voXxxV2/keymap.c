@@ -113,6 +113,7 @@ enum klor_layers {
     _QWERTY,
     _NAV,
     _NUM,
+    _FUN,
     _SYM,
     _ADJUST,
 };
@@ -148,8 +149,8 @@ enum klor_layers {
 #define ALT_M RALT_T(KC_M)
 #define GUI_O MT(MOD_LGUI, KC_O)
 #define GUI_sc LGUI_T(KC_SCLN)
-//#define Fun_Del LT(Fun, KC_DEL)
 #define SYM_ENT LT(_SYM, KC_ENTER)
+#define FUN_DEL LT(_FUN, KC_DEL)
 #define NUM_BS LT(_NUM, KC_DEL)
 // ┌───────────────────────────────────────────────────────────┐
 // │ d e f i n e   s o u n d s                                 │
@@ -191,7 +192,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                              KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,
     KC_TAB,   GUI_A,    ALT_S,    SHT_D,    CTL_F,    KC_G,                                              KC_H,     CTL_J,    SHT_K,    ALT_L,    GUI_sc,    KC_QUOT,
     KC_DEL,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_MUTE,                       KC_MPLY,  KC_N,     ALT_M,    KC_COMM,  KC_DOT,   KC_SLSH,   KC_RSFT,
-                                            KC_ESC,   NAV_SPC,  KC_TAB,   ADJUST,    KC_LGUI,  SYM_ENT,  NUM_BS,   KC_DEL
+                                            KC_ESC,   NAV_SPC,  KC_TAB,   ADJUST,    KC_LGUI,  SYM_ENT,  NUM_BS,   FUN_DEL
  ),
 
  /*
@@ -262,6 +263,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,  KC_TILD,  KC_EXLM,  KC_AT,    KC_HASH,  KC_PIPE,  _______,                       _______,  _______,  _______,  _______,  _______,  _______,   _______,
                                             KC_LPRN,  KC_RPRN,  KC_UNDS,  _______,   _______,  _______,  _______,  _______
 ),
+ /*
+   ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
+
+   ┌───────────────────────────────────────────────────────────┐
+   │ f u n c t i o n                                           │
+   └───────────────────────────────────────────────────────────┘
+             ┌─────────┬─────────┬─────────┬─────────┬─────────┐   __________________________________   ┌─────────┬─────────┬─────────┬─────────┬─────────┐
+             │    [    │    7    │    8    │    9    │    ]    │  /                                  \  │    Y    │    U    │    I    │    O    │    P    │
+   ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤ /                                    \ ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
+   │   Tab   │    ;    │    4    │    5    │    6    │    =    |/      ────────           ────────     \│    H    │ Ctl(J)  │Shift(K) │ AltR(L) │ GUI(;)  │    "    │
+   ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤      │Mute/Vol│         │PLY/Scrol│    ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+   │Shift/Cap│    ,    │   F1    │    2    │    3    │    \    │       ────────           ────────      │    N    │    M    │    ,    │    .    │    /    │  AltR   │
+   └─────────┴─────────┴─────────┴─────────┼─────────┼─────────┼─────────┬─────────┐┌─────────┬─────────┼─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
+                                           │    .    │    0    │    -    │         ││         │Sym(ENT) │Num(BSpc)│Fun(Del) │
+                                           └─────────┴─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┴─────────┘ */
+   [_FUN] = LAYOUT_polydactyl(
+ //╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷
+              KC_LBRC,  KC_7,     KC_8,     KC_9,     KC_RBRC,                                           _______,  _______,  _______,  _______,  _______,
+    _______,  KC_SCLN,  KC_4,     KC_5,     KC_6,     KC_EQL,                                            _______,  _______,  _______,  _______,  _______,   _______,
+    _______,  KC_COMM,  KC_1,     KC_2,     KC_3,     KC_BSLS,  _______,                       _______,  _______,  _______,  _______,  _______,  _______,   _______,
+                                            KC_DOT,   KC_0,     KC_MINS,  _______,   _______,  _______,  _______,  _______
 ),
 /*
    ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
@@ -356,8 +378,13 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
             rgb_home_row('l');
             break;
         case _NUM:
-            rgb_block(8,15, RGB_BLUE);
-            rgb_matrix_set_color(2, RGB_BLUE);
+            rgb_indicator('l', RGB_AZURE);
+            rgb_home_row('r');
+            break;
+        case _FUN:
+            rgb_indicator('l', RGB_BLUE);
+            rgb_home_row('r');
+            break;
         case _SYM:
             rgb_block(8,15, RGB_CORAL);
             rgb_matrix_set_color(2, RGB_CORAL);
@@ -392,6 +419,9 @@ bool render_status(void) {
             break;
         case _NUM:
             oled_write_P(PSTR("N U M\n"), false);
+            break;
+        case _FUN:
+            oled_write_P(PSTR("F U N\n"), false);
             break;
         case _SYM:
             oled_write_P(PSTR("S Y M\n"), false);
