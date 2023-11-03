@@ -79,7 +79,26 @@ void rgb_home_row(char side){
         rgb_matrix_set_color(28, RGB_WHITE);
     }
 }
+void rgb_indicator(char side, uint8_t red, uint8_t green, uint8_t blue){
 
+    // colors outer colonm and inner upper corner
+    // left
+    if (side == 'l'){
+        rgb_block(19, 20, red, green, blue);
+        rgb_block(4, 6, red, green, blue);
+    // right
+    } else if (side == 'r') {
+        rgb_block(40, 41, red, green, blue);
+        rgb_block(25, 27, red, green, blue);
+    }
+    // both sides
+    else {
+        rgb_block(19, 20, red, green, blue);
+        rgb_block(4, 6, red, green, blue);
+        rgb_block(40, 41, red, green, blue);
+        rgb_block(25, 27, red, green, blue);
+    }
+}
 // ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 // │ D E F I N I T I O N S                                                                                                                      │
 // └────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
