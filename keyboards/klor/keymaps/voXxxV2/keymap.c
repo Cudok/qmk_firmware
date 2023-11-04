@@ -137,7 +137,7 @@ enum klor_layers {
 #define ADJUST MO(_ADJUST)
 #define QWERTY MO(_QWERTY)
 #define NAV_SPC LT(_NAV, KC_SPC)
-//#define Medi_Esc LT(Medi, KC_ESC)
+#define MED_ESC LT(_MED, KC_ESC)
 #define MOS_TAB LT(_MOS, KC_TAB)
 
 // RIGHT HAND HOME ROW MODS ├───────────────────────────────────┐
@@ -194,7 +194,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                              KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,
     KC_TAB,   GUI_A,    ALT_S,    SHT_D,    CTL_F,    KC_G,                                              KC_H,     CTL_J,    SHT_K,    ALT_L,    GUI_sc,    KC_QUOT,
     KC_DEL,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_MUTE,                       KC_MPLY,  KC_N,     ALT_M,    KC_COMM,  KC_DOT,   KC_SLSH,   KC_RSFT,
-                                            KC_ESC,   NAV_SPC,  MOS_TAB,  ADJUST,    KC_LGUI,  SYM_ENT,  NUM_BS,   FUN_DEL
+                                            MED_ESC,  NAV_SPC,  MOS_TAB,  ADJUST,    KC_LGUI,  SYM_ENT,  NUM_BS,   FUN_DEL
  ),
 
  /*
@@ -285,7 +285,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                              _______,  KC_UNDO,  KC_CUT,   KC_COPY,  KC_PSTE,
     KC_TAB,   GUI_A,    ALT_S,    SHT_D,    CTL_F,    KC_G,                                              KC_LEFT,  KC_DOWN,  KC_UP,    KC_RIGHT, KC_CAPS,  _______,
     KC_DEL,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_MUTE,                       _______,  KC_INS,   KC_PGDN,  KC_PGUP,  KC_HOME,  KC_END,   _______,
-                                            KC_ESC,   NAV_SPC,  MOS_TAB,  ADJUST,    _______,  _______,  _______,  _______
+                                            MED_ESC,  NAV_SPC,  MOS_TAB,  ADJUST,    _______,  _______,  _______,  _______
  ),
 
  /*
@@ -309,7 +309,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                              _______,  KC_UNDO,  KC_CUT,   KC_COPY,  KC_PSTE,
     KC_TAB,   GUI_A,    ALT_S,    SHT_D,    CTL_F,    KC_G,                                              KC_MS_L,  KC_MS_D,  KC_MS_U,  KC_MS_R,  KC_CAPS,  _______,
     KC_DEL,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_MUTE,                       _______,  KC_WH_L,  KC_WH_D,  KC_WH_U,  KC_WH_R,  KC_END,   _______,
-                                            KC_ESC,   NAV_SPC,  MOS_TAB,  ADJUST,    _______,  KC_BTN2,  KC_BTN1,  KC_BTN3
+                                            MED_ESC,  NAV_SPC,  MOS_TAB,  ADJUST,    _______,  KC_BTN2,  KC_BTN1,  KC_BTN3
  ),
  /*
    ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
@@ -318,21 +318,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    │ m e d i a                                                 │
    └───────────────────────────────────────────────────────────┘
              ┌─────────┬─────────┬─────────┬─────────┬─────────┐   __________________________________   ┌─────────┬─────────┬─────────┬─────────┬─────────┐
-             │    Q    │    W    │    E    │    R    │    T    │  /                                  \  │  redo   │  undo   │   cut   │  copy   │  paste  │
+             │    Q    │    W    │    E    │    R    │    T    │  /                                  \  │    R    │    M    │    H    │    S    │    V    │
    ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤ /                                    \ ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
-   │   Tab   │ GUI(A)  │ Alt(S)  │Shift(D) │ Ctl(F)  │    G    |/      ────────           ────────     \│  left   │  down   │    up   │  right  │  Caps   │    "    │
+   │   Tab   │ GUI(A)  │ Alt(S)  │Shift(D) │ Ctl(F)  │    G    |/      ────────           ────────     \│ prv trk │ vol down│ vol up  │ nxt trk │    E    │    "    │
    ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤      │Mute/Vol│         │PLY/Scrol│    ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-   │Shift/Cap│    Z    │    X    │    C    │    V    │    B    │       ────────           ────────      │  insert │page down│ page up │  home   │  end    │  AltR   │
+   │Shift/Cap│    Z    │    X    │    C    │    V    │    B    │       ────────           ────────      │    O    │    0    │    1    │    2    │    3    │  AltR   │
    └─────────┴─────────┴─────────┴─────────┼─────────┼─────────┼─────────┬─────────┐┌─────────┬─────────┼─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
-                                           │Medi(Esc)│Nav(Spc) │Mos(TAB) │         ││         │Sym(ENT) │Num(BSpc)│Fun(Del) │
+                                           │Medi(Esc)│Nav(Spc) │Mos(TAB) │         ││         │  Stop   │   Play  │   Mute  │
                                            └─────────┴─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┴─────────┘ */
 
    [_MED] = LAYOUT_polydactyl(
  //╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷
-              _______,  _______,  _______,  _______,  _______,                                           _______,  _______,  _______,  _______,  _______,
-    _______,  _______,  _______,  _______,  _______,  _______,                                           _______,  _______,  _______,  _______,  _______,  _______,
-    _______,  _______,  _______,  _______,  _______,  _______,  _______,                       _______,  _______,  _______,  _______,  _______,  _______,  _______,
-                                            _______,  _______,  _______,  _______,   _______,  _______,  _______,  _______
+              KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                              KC_R,     KC_M,     KC_H,     KC_S,     KC_V,
+    KC_TAB,   GUI_A,    ALT_S,    SHT_D,    CTL_F,    KC_G,                                              KC_MPRV,  KC_VOLD,  KC_VOLU,  KC_MNXT,  KC_E,     _______,
+    KC_DEL,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_MUTE,                       _______,  KC_O,     KC_0,     KC_1,     KC_2,     KC_3,     _______,
+                                            MED_ESC,  NAV_SPC,  MOS_TAB,  ADJUST,    _______,  KC_MSTP,  KC_MPLY,  KC_MUTE
  ),
 /*
    ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
