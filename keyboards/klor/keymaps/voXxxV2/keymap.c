@@ -368,12 +368,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
             rgb_home_row('r');
             break;
         case _SYM:
-            rgb_block(8,15, RGB_CORAL);
-            rgb_matrix_set_color(2, RGB_CORAL);
-            rgb_block(3,5, RGB_AZURE);
-            rgb_matrix_set_color(1, RGB_AZURE);
-            rgb_matrix_set_color(9, RGB_AZURE);
-            rgb_block(16,18, RGB_AZURE);
+            rgb_indicator('l', RGB_CORAL);
             rgb_home_row('r');
             break;
         default:
