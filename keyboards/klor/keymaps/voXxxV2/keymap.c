@@ -153,7 +153,7 @@ enum klor_layers {
 #define GUI_sc LGUI_T(KC_SCLN)
 #define SYM_ENT LT(_SYM, KC_ENTER)
 #define FUN_DEL LT(_FUN, KC_DEL)
-#define NUM_BS LT(_NUM, KC_DEL)
+#define NUM_BS LT(_NUM, KC_BSPC)
 // ┌───────────────────────────────────────────────────────────┐
 // │ d e f i n e   s o u n d s                                 │
 // └───────────────────────────────────────────────────────────┘
