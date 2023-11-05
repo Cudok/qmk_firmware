@@ -150,7 +150,7 @@ enum klor_layers {
 #define ALT_L LALT_T(KC_L)
 #define ALT_M RALT_T(KC_M)
 #define GUI_O MT(MOD_LGUI, KC_O)
-#define GUI_sc LGUI_T(KC_SCLN)
+#define GUI_SC LGUI_T(KC_SCLN)
 #define SYM_ENT LT(_SYM, KC_ENTER)
 #define FUN_DEL LT(_FUN, KC_DEL)
 #define NUM_BS LT(_NUM, KC_BSPC)
@@ -192,8 +192,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    [_QWERTY] = LAYOUT_polydactyl(
  //╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷
               KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                                              KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,
-    KC_TAB,   GUI_A,    ALT_S,    SHT_D,    CTL_F,    KC_G,                                              KC_H,     CTL_J,    SHT_K,    ALT_L,    GUI_sc,    KC_QUOT,
-    KC_DEL,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_MUTE,                       KC_MPLY,  KC_N,     ALT_M,    KC_COMM,  KC_DOT,   KC_SLSH,   KC_RSFT,
+    KC_TAB,   GUI_A,    ALT_S,    SHT_D,    CTL_F,    KC_G,                                              KC_H,     CTL_J,    SHT_K,    ALT_L,    GUI_SC,    KC_QUOT,
+    KC_LSFT,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_MUTE,                       KC_MPLY,  KC_N,     ALT_M,    KC_COMM,  KC_DOT,   KC_SLSH,   KC_RALT,
                                             MED_ESC,  NAV_SPC,  MOS_TAB,  ADJUST,    KC_LGUI,  SYM_ENT,  NUM_BS,   FUN_DEL
  ),
 
