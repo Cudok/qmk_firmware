@@ -36,6 +36,11 @@ for more options.
 
 #define SPLIT_LAYER_STATE_ENABLE
 
+// not detected when boot at x1
+#define SPLIT_USB_DETECT
+#define SPLIT_USB_TIMEOUT 2000
+#define SPLIT_WATCHDOG_ENABLE
+
 // RGB matrix support
 #ifdef RGB_MATRIX_ENABLE
 #    define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_SOLID_COLOR
