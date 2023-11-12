@@ -21,6 +21,16 @@
 #define TAPPING_TERM 200 // 100 ms is to small for me
 #define TAPPING_TOGGLE 2 // default is 5
 
+
+
+// split  communication
+// not detected when boot at x1
+#define SPLIT_USB_DETECT
+#define SPLIT_USB_TIMEOUT 2000
+#define SPLIT_WATCHDOG_ENABLE
+
+
+
 #ifdef RGBLIGHT_ENABLE
 #    define RGBLIGHT_LAYERS
 #    define RGBLED_NUM 62
