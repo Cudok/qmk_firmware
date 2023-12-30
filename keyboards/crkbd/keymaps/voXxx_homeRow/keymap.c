@@ -21,6 +21,79 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <stdio.h>
 #include <string.h>
 
+// rgb functions
+void rgb_block(int led_start, int led_end, uint8_t red, uint8_t green, uint8_t blue) {
+
+    for (uint8_t i = led_start; i < led_end+1; i++) {
+        rgb_matrix_set_color(i, red, green, blue);
+    }
+}
+void rgb_home_row(char side){
+
+    // GUI color: Red, index: 17 and 38
+    // not used must adaped to crkbd layout
+    // left
+    if (side == 'l'){
+        rgb_matrix_set_color(17, RGB_RED);
+    // right
+    } else if (side == 'r') {
+        rgb_matrix_set_color(38, RGB_RED);
+    }
+    else {
+        rgb_matrix_set_color(17, RGB_RED);
+        rgb_matrix_set_color(38, RGB_RED);
+    }
+    // ALT color: Orange, index: 14 and 35
+    if (side == 'l'){
+        rgb_matrix_set_color(14, RGB_ORANGE);
+    // right
+    } else if (side == 'r') {
+        rgb_matrix_set_color(35, RGB_ORANGE);
+    }
+    else {
+        rgb_matrix_set_color(14, RGB_ORANGE);
+        rgb_matrix_set_color(35, RGB_ORANGE);
+    }
+    // SHIFT color: Yellow, index: 11 and 32
+    if (side == 'l'){
+        rgb_matrix_set_color(11, RGB_YELLOW);
+    // right
+    } else if (side == 'r') {
+        rgb_matrix_set_color(32, RGB_YELLOW);
+    }
+    else {
+        rgb_matrix_set_color(11, RGB_YELLOW);
+        rgb_matrix_set_color(32, RGB_YELLOW);
+    }
+    // CTRL color: White, index: 07 and 28
+    if (side == 'l'){
+        rgb_matrix_set_color(07, RGB_WHITE);
+    // right
+    } else if (side == 'r') {
+        rgb_matrix_set_color(28, RGB_WHITE);
+    }
+    else {
+        rgb_matrix_set_color(07, RGB_WHITE);
+        rgb_matrix_set_color(28, RGB_WHITE);
+    }
+}
+void rgb_indicator(char side, uint8_t red, uint8_t green, uint8_t blue){
+
+    // colors outer column and inner column
+    // left
+    if (side == 'l'){
+        rgb_block(0, 5, red, green, blue);
+    // right
+    } else if (side == 'r') {
+        rgb_block(27, 32, red, green, blue);
+    }
+    // both sides
+    else {
+        rgb_block(0, 5, red, green, blue);
+        rgb_block(27, 32, red, green, blue);
+    }
+}
+
 // definitions
 //
 // define layers
@@ -193,6 +266,65 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
 //                                       ,                ,        ,           ,            ,
                                       //`--------------------------'  `--------------------------'
+
+#if RGB_MATRIX_ENABLE
+bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+    if (host_keyboard_led_state().caps_lock) {
+      rgb_indicator('b', RGB_RED);
+      /* for (uint8_t i = 4; i < 7; i++) { */
+      /*     rgb_matrix_set_color(i, RGB_RED); */
+      /* } */
+      /* // not possible to change color of the secondary split half in case of caps look */
+      /***************************************/
+      /* for (uint8_t i = 25; i < 27; i++) { */
+      /*   rgb_matrix_set_color(i, RGB_RED); */
+      /* }                                   */
+      /* rgb_matrix_set_color(25, RGB_RED);  */
+      /* rgb_matrix_set_color(26, RGB_RED);  */
+      /* rgb_matrix_set_color(27, RGB_RED);  */
+      /***************************************/
+      /* RGB_MATRIX_INDICATOR_SET_COLOR(25, 255, 255, 255); // assuming caps lock is at led #5 */
+    }
+    switch(get_highest_layer(layer_state|default_layer_state)) {
+        case _ADJUST:
+            // qwerty
+            rgb_matrix_set_color(19, RGB_TURQUOISE);
+            // qmk boot
+            rgb_matrix_set_color(25, RGB_RED);
+
+            rgb_matrix_set_color(17, RGB_AZURE);
+            rgb_block(15,16, RGB_GREEN);
+            rgb_matrix_set_color(10, RGB_CYAN);
+            rgb_block(11,12, RGB_BLUE);
+            rgb_indicator('l', RGB_ORANGE);
+            break;
+        case _NUM:
+            rgb_indicator('l', RGB_AZURE);
+            break;
+        case _FUN:
+            rgb_indicator('l', RGB_BLUE);
+            break;
+        case _SYM:
+            rgb_indicator('l', RGB_CORAL);
+            break;
+        case _NAV:
+            rgb_indicator('r', RGB_GREEN);
+            break;
+        case _MOS:
+            rgb_indicator('r', RGB_YELLOW);
+            break;
+        case _MED:
+            rgb_indicator('r', RGB_PINK);
+            break;
+        default:
+            break;
+        }
+    return false;
+}
+
+#endif
+
+
 // oled
 #ifdef OLED_ENABLE
 
