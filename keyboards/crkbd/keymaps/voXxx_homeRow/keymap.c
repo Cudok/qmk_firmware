@@ -115,6 +115,7 @@ enum crkbd_layers {
 #define GUI_A LGUI_T(KC_A)
 #define ALT_S LALT_T(KC_S)
 #define ALT_R LALT_T(KC_R)
+#define ALT_V RALT_T(KC_V)
 #define CTL_S MT(MOD_LCTL, KC_S)
 #define CTL_F LCTL_T(KC_F)
 #define SHT_T MT(MOD_LSFT, KC_T)
@@ -147,7 +148,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        KC_TAB,   GUI_A,   ALT_S,   SHT_D,   CTL_F,    KC_G,                         KC_H,   CTL_J,   SHT_K,   ALT_L, GUI_SC,  KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,   ALT_M, KC_COMM,  KC_DOT, KC_SLSH, FUN_DEL,
+      KC_LSFT,    KC_Z,    KC_X,    KC_C,   ALT_V,    KC_B,                         KC_N,   ALT_M, KC_COMM,  KC_DOT, KC_SLSH, FUN_DEL,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           MED_ESC, NAV_SPC, MOS_TAB,    SYM_ENT,  NUM_BS, FUN_DEL
                                       //`--------------------------'  `--------------------------'
@@ -196,7 +197,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        KC_TAB,   GUI_A,   ALT_S,   SHT_D,   CTL_F,    KC_G,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, KC_CAPS, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       KC_DEL,   KC_Z,     KC_X,    KC_C,    KC_V,    KC_B,                       KC_INS, KC_PGDN, KC_PGUP, KC_HOME,  KC_END, _______,
+       KC_DEL,   KC_Z,     KC_X,    KC_C,   ALT_V,    KC_B,                       KC_INS, KC_PGDN, KC_PGUP, KC_HOME,  KC_END, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                         MED_ESC,  NAV_SPC,  MOS_TAB,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
@@ -208,7 +209,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        KC_TAB,   GUI_A,   ALT_S,   SHT_D,   CTL_F,    KC_G,                      KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_CAPS, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       KC_DEL,   KC_Z,     KC_X,    KC_C,    KC_V,    KC_B,                      KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R,  KC_END, _______,
+       KC_DEL,   KC_Z,     KC_X,    KC_C,   ALT_V,    KC_B,                      KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R,  KC_END, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           MED_ESC, NAV_SPC, MOS_TAB,    KC_BTN2, KC_BTN1, KC_BTN3
                                       //`--------------------------'  `--------------------------'
@@ -220,7 +221,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        KC_TAB,   GUI_A,   ALT_S,   SHT_D,   CTL_F,    KC_G,                      KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT,    KC_E, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       KC_DEL,   KC_Z,     KC_X,    KC_C,    KC_V,    KC_B,                         KC_O,    KC_0,    KC_1,    KC_2,    KC_3, _______,
+       KC_DEL,   KC_Z,     KC_X,    KC_C,   ALT_V,    KC_B,                         KC_O,    KC_0,    KC_1,    KC_2,    KC_3, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           MED_ESC, NAV_SPC, MOS_TAB,    KC_MSTP, KC_MPLY, KC_MUTE
                                       //`--------------------------'  `--------------------------'
