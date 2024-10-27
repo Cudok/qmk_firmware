@@ -108,10 +108,10 @@ enum crkbd_layers {
     _MOS,
     _MED,
     _ADJUST,
+    _BLENDER,
 };
 
 // left hand home row mods
-
 #define GUI_A LGUI_T(KC_A)
 #define ALT_S LALT_T(KC_S)
 #define ALT_R LALT_T(KC_R)
@@ -120,14 +120,18 @@ enum crkbd_layers {
 #define CTL_F LCTL_T(KC_F)
 #define SHT_T MT(MOD_LSFT, KC_T)
 #define SHT_D LSFT_T(KC_D)
+
+// left hand extra layer
 #define ADJUST MO(_ADJUST)
 #define QWERTY MO(_QWERTY)
+
+// right hand thumb keys
 #define NAV_SPC LT(_NAV, KC_SPC)
 #define MED_ESC LT(_MED, KC_ESC)
 #define MOS_TAB LT(_MOS, KC_TAB)
+#define BLR_TG TG(_BLENDER)
 
 // right hand home row mods
-
 #define SHT_N MT(MOD_RSFT, KC_N)
 #define SHT_K RSFT_T(KC_K)
 #define CTL_E MT(MOD_LCTL, KC_E)
@@ -137,6 +141,7 @@ enum crkbd_layers {
 #define ALT_M RALT_T(KC_M)
 #define GUI_O MT(MOD_LGUI, KC_O)
 #define GUI_SC LGUI_T(KC_SCLN)
+// right hand thumb keys
 #define SYM_ENT LT(_SYM, KC_ENTER)
 #define FUN_DEL LT(_FUN, KC_DEL)
 #define NUM_BS LT(_NUM, KC_BSPC)
@@ -163,7 +168,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, KC_GRV,     KC_1,    KC_2,    KC_3, KC_BSLS,                      _______, _______, _______, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           KC_DOT,    KC_0, KC_MINS,    _______, _______, _______
+                                           KC_DOT,    KC_0, KC_MINS,    _______, _______, BLR_TG
+                                      //`--------------------------'  `--------------------------'
+  ),
+
+    [_BLENDER] = LAYOUT_split_3x6_3(
+  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+      _______, KC_LBRC,   KC_P7,   KC_P8,   KC_P9, KC_RBRC,                      _______, _______, _______, _______, _______, _______,
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      _______, KC_SCLN,   KC_P4,   KC_P5,   KC_P6,  KC_EQL,                      _______, _______, _______, _______, _______, _______,
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      _______, KC_GRV,    KC_P1,   KC_P2,   KC_P3, KC_BSLS,                      _______, _______, _______, _______, _______, _______,
+  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
+                                           KC_DOT,   KC_P0, KC_MINS,    _______, _______, BLR_TG
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -317,6 +334,9 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         case _MED:
             rgb_indicator('r', RGB_PINK);
             break;
+        case _BLENDER:
+            rgb_indicator('l', RGB_ORANGE);
+            break;
         default:
             break;
         }
@@ -357,6 +377,9 @@ bool render_status(void) {
             break;
         case _ADJUST:
             oled_write_P(PSTR("A D J\n"), false);
+            break;
+        case _BLENDER:
+            oled_write_P(PSTR("B L R\n"), false);
             break;
         default:
             // Or use the write_ln shortcut over adding '\n' to the end of your string
