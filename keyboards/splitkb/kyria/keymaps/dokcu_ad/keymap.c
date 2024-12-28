@@ -292,26 +292,36 @@ const rgblight_segment_t PROGMEM adjust_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 );
 // rgb layer for layer num_move
 // number keys
-#define color_number_keys HSV_BLUE
-const rgblight_segment_t PROGMEM num_move_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-                                                                            {25,6, color_number_keys}, // number keys
-                                                                            {56,6, color_number_keys}, // number keys
-                                                                            {50,1, HSV_GREEN}, // moveing keys
-                                                                            {51,2, HSV_YELLOW}, // moveing keys
-                                                                            {53,1, HSV_GREEN},  // moveing keys
-                                                                            {54,1, HSV_RED},  // delete keys
-                                                                            {55,1, HSV_CYAN},  // screen shoot keys
-                                                                            {0, 6, HSV_BLUE},
-                                                                            {31, 6, HSV_BLUE}
+const rgblight_segment_t PROGMEM nav_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+                                                                            {51,3, HSV_GREEN}, // moveing keys
+                                                                            {58,1, HSV_GREEN},  // moveing keys
+                                                                            {54,1, HSV_YELLOW},  // page up
+                                                                            {48,1, HSV_YELLOW},  // page down
+                                                                            {48,1, HSV_YELLOW},  // page down
+                                                                            {56,1, HSV_ORANGE},  // screen shot
+                                                                            {50,1, HSV_BLUE},  // home
+                                                                            {44,1, HSV_BLUE},  // end
+                                                                            {31, 6, HSV_GREEN}  // layer indikator
                                                                             );
-
-
+const rgblight_segment_t PROGMEM number_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {14,3, HSV_WHITE}, // numbers
+    {20,3, HSV_WHITE}, // numbers
+    {26,3, HSV_WHITE}, // numbers
+    {8,1, HSV_WHITE}, // numbers
+    {29,1, HSV_YELLOW},  // symbols
+    {23,1, HSV_YELLOW},  // symbols
+    {25,1, HSV_YELLOW},  // symbols
+    {19,1, HSV_YELLOW},  // symbols
+    {13,1, HSV_YELLOW},  // symbols
+    {17,1, HSV_YELLOW}  // symbols
+);
 // Now define the array of layers. Later layers take precedence
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
     my_capslock_layer,  // caps lock layer, normally I dont need
-    num_move_layer,    // numbers and move layer
+    nav_layer,    // navigation layer
     sym_layer,    // Overrides other layers
-    adjust_layer     // Overrides other layers
+    adjust_layer,     // Overrides other layers
+    number_layer    // numbers layer
 );
 
 void keyboard_post_init_user(void) {
@@ -327,6 +337,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(1, layer_state_cmp(state, _NAV));
     rgblight_set_layer_state(2, layer_state_cmp(state, _SYM));
     rgblight_set_layer_state(3, layer_state_cmp(state, _ADJUST));
+    rgblight_set_layer_state(4, layer_state_cmp(state, _NUM));
     return state;
 }
 //////// added
