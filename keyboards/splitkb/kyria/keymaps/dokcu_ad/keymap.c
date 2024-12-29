@@ -155,20 +155,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  _______, KC_APP , _______, _______, _______, _______, _______, _______, _______, _______
     ),
 
-/*
- * Adjust Layer: Default layer settings, RGB
- *
- * ,-------------------------------------------.                              ,-------------------------------------------.
- * |        |      |      |QWERTY|      |      |                              |      |      |      |      |      |        |
- * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        |      |      |Dvorak|      |      |                              | TOG  | SAI  | HUI  | VAI  | MOD  |        |
- * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |        |      |      |Colmak|      |      |      |      |  |      |      |      | SAD  | HUD  | VAD  | RMOD |        |
- * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |      |      |      |      |      |  |      |      |      |      |      |
- *                        |      |      |      |      |      |  |      |      |      |      |      |
- *                        `----------------------------------'  `----------------------------------'
- */
     [_ADJUST] = LAYOUT(
       _______, _______, _______, QWERTY , _______, _______,                                    _______, _______, _______, _______,  _______, _______,
       _______, _______, _______, DVORAK , _______, _______,                                    RGB_TOG, RGB_SAI, RGB_HUI, RGB_VAI,  RGB_MOD, _______,
@@ -262,8 +248,16 @@ const rgblight_segment_t PROGMEM sym_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 );
 // Light LEDs 13 & 14 in green when keyboard layer 3 is active
 const rgblight_segment_t PROGMEM adjust_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 6, HSV_GREEN},
-    {31, 6, HSV_GREEN}       // Light 4 LEDs, starting with LED 12
+    {50,1, HSV_ORANGE}, // rgb on/off
+    {51,1, HSV_GREEN}, // rgb sai
+    {45,3, HSV_GREEN}, // rgb sai
+    {52,1, HSV_CORAL}, // rgb hue (color)
+    {46,1, HSV_CORAL}, // rgb hue (color)
+    {53,1, HSV_YELLOW}, // rgb vai (bright)
+    {47,1, HSV_YELLOW}, // rgb vai (bright)
+    {54,1, HSV_PINK}, // rgb Mode (animation)
+    {48,1, HSV_PINK}, // rgb Mode (animation)
+    {31, 6, HSV_GOLD}  // indicator lights
 );
 // rgb layer for layer num_move
 // number keys
