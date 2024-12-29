@@ -252,10 +252,18 @@ const rgblight_segment_t PROGMEM my_capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {31, 6, HSV_RED}       // Light 4 LEDs, starting with LED 12
 );
 
-// Light LEDs 11 & 12 in purple when keyboard layer 2 is active
 const rgblight_segment_t PROGMEM sym_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 6, HSV_PURPLE},
-    {31, 6, HSV_PURPLE}       // Light 4 LEDs, starting with LED 12
+    {14,3, HSV_CORAL}, // symbols keys
+    {20,3, HSV_CORAL}, // symbols keys
+    {26,3, HSV_CORAL}, // symbols keys
+    {7,3, HSV_CORAL}, // symbols keys
+    {29,1, HSV_CORAL},  // symbols keys
+    {23,1, HSV_CORAL},  // symbols keys
+    {25,1, HSV_CORAL},  // symbols keys
+    {19,1, HSV_CORAL},  // symbols keys
+    {13,1, HSV_CORAL},  // symbols keys
+    {17,1, HSV_CORAL},  // symbols keys
+    {0, 6, HSV_CORAL} // indicator lights
 );
 // Light LEDs 13 & 14 in green when keyboard layer 3 is active
 const rgblight_segment_t PROGMEM adjust_layer[] = RGBLIGHT_LAYER_SEGMENTS(
