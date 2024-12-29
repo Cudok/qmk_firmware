@@ -148,25 +148,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  _______, KC_LPRN, KC_RPRN, KC_UNDS, _______, _______, _______, _______, _______, _______
     ),
 
-/*
- * Function Layer: Function keys
- *
- * ,-------------------------------------------.                              ,-------------------------------------------.
- * |        |  F9  | F10  | F11  | F12  |      |                              |      |      |      |      |      |        |
- * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        |  F5  |  F6  |  F7  |  F8  |      |                              |      | Shift| Ctrl |  Alt |  GUI |        |
- * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |        |  F1  |  F2  |  F3  |  F4  |      |      |      |  |      |      |      |      |      |      |      |        |
- * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |      |      |      |      |      |  |      |      |      |      |      |
- *                        |      |      |      |      |      |  |      |      |      |      |      |
- *                        `----------------------------------'  `----------------------------------'
- */
     [_FUNCTION] = LAYOUT(
-      _______,  KC_F9 ,  KC_F10,  KC_F11,  KC_F12, _______,                                     _______, _______, _______, _______, _______, _______,
-      _______,  KC_F5 ,  KC_F6 ,  KC_F7 ,  KC_F8 , _______,                                     _______, KC_RSFT, KC_RCTL, KC_LALT, KC_RGUI, _______,
-      _______,  KC_F1 ,  KC_F2 ,  KC_F3 ,  KC_F4 , _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-                                 _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+      _______,  KC_F12,  KC_F7 ,  KC_F8 ,  KC_F9 , KC_PSCR,                                     _______, _______, _______, _______, _______, _______,
+      _______,  KC_F11,  KC_F4 ,  KC_F5 ,  KC_F6 , KC_SCRL,                                     _______, _______, _______, _______, _______, _______,
+      _______,  KC_F10,  KC_F1 ,  KC_F2 ,  KC_F3 , KC_BRK , _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+                                 _______, KC_APP , _______, _______, _______, _______, _______, _______, _______, _______
     ),
 
 /*
@@ -299,7 +285,21 @@ const rgblight_segment_t PROGMEM number_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {25,1, HSV_YELLOW},  // symbols
     {19,1, HSV_YELLOW},  // symbols
     {13,1, HSV_YELLOW},  // symbols
-    {17,1, HSV_YELLOW}  // symbols
+    {17,1, HSV_YELLOW},  // symbols
+    {0, 6, HSV_WHITE} // indicator lights
+);
+const rgblight_segment_t PROGMEM function_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {14,3, HSV_BLUE}, // function keys
+    {20,3, HSV_BLUE}, // function keys
+    {26,3, HSV_BLUE}, // function keys
+    {29,1, HSV_BLUE},  // function keys
+    {23,1, HSV_BLUE},  // function keys
+    {17,1, HSV_BLUE},  // functions keys
+    {25,1, HSV_MAGENTA},  // symbols keys
+    {19,1, HSV_MAGENTA},  // symbols keys
+    {13,1, HSV_MAGENTA},  // symbols keys
+    {9,1, HSV_MAGENTA},  // symbols keys
+    {0, 6, HSV_BLUE} // indicator lights
 );
 // Now define the array of layers. Later layers take precedence
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
@@ -307,7 +307,8 @@ const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
     nav_layer,    // navigation layer
     sym_layer,    // Overrides other layers
     adjust_layer,     // Overrides other layers
-    number_layer    // numbers layer
+    number_layer,   // number keys layer
+    function_layer // function keys layer
 );
 
 void keyboard_post_init_user(void) {
@@ -324,6 +325,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(2, layer_state_cmp(state, _SYM));
     rgblight_set_layer_state(3, layer_state_cmp(state, _ADJUST));
     rgblight_set_layer_state(4, layer_state_cmp(state, _NUM));
+    rgblight_set_layer_state(5, layer_state_cmp(state, _FUNCTION));
     return state;
 }
 //////// added
