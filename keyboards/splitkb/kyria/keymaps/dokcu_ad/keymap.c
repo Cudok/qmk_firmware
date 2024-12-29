@@ -176,25 +176,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  _______, _______, _______,_______, _______, _______, _______, _______, _______, _______
     ),
 
-/*
- * Media Layer: Media keys
- *
- * ,-------------------------------------------.                              ,-------------------------------------------.
- * |        |      |      |      |      |      |                              |      |      |      |      |      |        |
- * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |                              | TOG  | SAI  | HUI  | VAI  | MOD  |        |
- * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |      |  |      |      |      | SAD  | HUD  | VAD  | RMOD |        |
- * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |      |      |      |      |      |  |      |      |      |      |      |
- *                        |      |      |      |      |      |  |      |      |      |      |      |
- *                        `----------------------------------'  `----------------------------------'
- */
     [_MEDIA] = LAYOUT(
       _______, _______, _______, _______, _______, _______,                                    _______, _______, _______, _______,  _______, _______,
-      _______, _______, _______, _______, _______, _______,                                    RGB_TOG, RGB_SAI, RGB_HUI, RGB_VAI,  RGB_MOD, _______,
-      _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, RGB_SAD, RGB_HUD, RGB_VAD, RGB_RMOD, _______,
-                                 _______, _______, _______,_______, _______, _______, _______, _______, _______, _______
+      _______, _______, _______, _______, _______, _______,                                    KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT,  _______, _______,
+      _______, _______, _______, _______, _______, _______,_______, _______, _______, _______, _______, _______, _______, _______,  _______, _______,
+                                 _______, _______, _______,_______, _______, _______, KC_MSTP, KC_MPLY, KC_MUTE, _______
     ),
 
 // /*
@@ -252,6 +238,15 @@ const rgblight_segment_t PROGMEM my_capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {31, 6, HSV_RED}       // Light 4 LEDs, starting with LED 12
 );
 
+const rgblight_segment_t PROGMEM media_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {38,1, HSV_ORANGE}, // stop
+    {39,1, HSV_BLUE}, // play
+    {40,1, HSV_WHITE}, // mute
+    {50,1, HSV_GREEN}, // previous
+    {51,2, HSV_GOLD}, // vol down/up
+    {53,1, HSV_GREEN}, // next
+    {31, 6, HSV_TEAL}  // indicator lights
+);
 const rgblight_segment_t PROGMEM sym_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {14,3, HSV_CORAL}, // symbols keys
     {20,3, HSV_CORAL}, // symbols keys
@@ -316,7 +311,8 @@ const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
     sym_layer,    // Overrides other layers
     adjust_layer,     // Overrides other layers
     number_layer,   // number keys layer
-    function_layer // function keys layer
+    function_layer, // function keys layer
+    media_layer // media keys layer
 );
 
 void keyboard_post_init_user(void) {
@@ -334,6 +330,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(3, layer_state_cmp(state, _ADJUST));
     rgblight_set_layer_state(4, layer_state_cmp(state, _NUM));
     rgblight_set_layer_state(5, layer_state_cmp(state, _FUNCTION));
+    rgblight_set_layer_state(6, layer_state_cmp(state, _MEDIA));
     return state;
 }
 //////// added
